@@ -1,7 +1,6 @@
 ---
 title: Build Smart Contract REST API
 date: 2025-05-08T17:50:00.000Z
-slug: build-smart-contract-rest-api
 tags:
   - smartcontract
   - blockchain

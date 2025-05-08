@@ -1,6 +1,5 @@
 ---
 title: "Unlocking the Fast Lane: Accelerate Your Programming Journey"
-slug: unlocking-the-fast-lane-accelerate-your-programming-journey
 date: 2025-05-08T17:54:00.000Z
 tags:
   - programming

@@ -1,6 +1,5 @@
 ---
-title: "Rich Text Editor for React or NextJS "
-slug: "rich-text-editor-for-react-nextjs"
+title: "Rich Text Editor for React or NextJS"
 date: 2025-05-08T17:55:00.000Z
 tags:
   - rich
