@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const Header = () => {
-    const [showNavMobile, setShowNavMobile] = React.useState(false);
-    
+  const [showNavMobile, setShowNavMobile] = React.useState(false);
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-gray-900/80 border-b border-gray-800">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -31,13 +31,19 @@ const Header = () => {
             About
           </a>
           <a
-            href="#projects"
+            href="/project"
             className="hover:text-emerald-400 transition-colors"
           >
             Projects
           </a>
           <a href="/blog" className="hover:text-emerald-400 transition-colors">
             Blog
+          </a>
+          <a
+            href="/knowledge-base"
+            className="hover:text-emerald-400 transition-colors"
+          >
+            Knowledge Base
           </a>
         </nav>
 
@@ -92,16 +98,22 @@ const Header = () => {
               About
             </a>
             <a
-              href="#projects"
+              href="/project"
               className="hover:text-emerald-400 transition-colors"
             >
               Projects
             </a>
             <a
-              href="#blog"
+              href="/blog"
               className="hover:text-emerald-400 transition-colors"
             >
               Blog
+            </a>
+            <a
+              href="/knowledge-base"
+              className="hover:text-emerald-400 transition-colors"
+            >
+              Knowledge Base
             </a>
           </div>
         </motion.div>

@@ -15,8 +15,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
     site: "https://portofolio-lutfi.netlify.app",
     integrations: [starlight({
-        title: 'Lutfi Portofolio',
-        social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+        title: 'HasLab by Lutfi',
+        social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/lutfi-haslab' }],
         sidebar: [
             {
                 label: 'Knowledge Base',
