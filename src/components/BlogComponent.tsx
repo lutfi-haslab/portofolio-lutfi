@@ -103,6 +103,7 @@ const BlogComponent = ({ item }: { item: BlogItemFeed }) => {
           target="_blank"
           rel="noopener noreferrer"
           className="group"
+          aria-label={`Read more about ${item.title}`}
         >
           <h3 className="text-xl md:text-2xl font-bold mb-3 text-white group-hover:text-emerald-400 transition-colors">
             {item.title}
@@ -128,6 +129,7 @@ const BlogComponent = ({ item }: { item: BlogItemFeed }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center text-emerald-400 hover:text-emerald-300 transition-colors"
+            aria-label={`Read more about ${item.title}`}
           >
             Read more <FiArrowRight className="ml-2" />
           </a>

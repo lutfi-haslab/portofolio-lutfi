@@ -50,6 +50,7 @@ const Header = () => {
         {/* Mobile Navigation Toggle */}
         <button
           className="md:hidden text-gray-300 hover:text-white focus:outline-none"
+          aria-label="Toggle navigation"
           onClick={() => setShowNavMobile(!showNavMobile)}
         >
           <svg

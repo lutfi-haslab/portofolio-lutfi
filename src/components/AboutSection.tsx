@@ -55,11 +55,13 @@ const AboutSection = () => {
               target="_blank"
               href="https://github.com/lutfi-haslab"
               className=" p-3 bg-gray-800 rounded-lg hover:bg-emerald-500 transition-colors"
+              aria-label="Lutfi's GitHub"
             >
               <FiGithub className="w-6 h-6" />
             </a>
             <a
               target="_blank"
+              aria-label="Lutfi's LinkedIn"
               href="https://www.linkedin.com/in/lutfi-ikbal-majid-044184172/"
               className="p-3 bg-gray-800 rounded-lg hover:bg-blue-500 transition-colors"
             >
@@ -67,6 +69,7 @@ const AboutSection = () => {
             </a>
             <a
               target="_blank"
+              aria-label="Lutfi's Twitter"
               href="https://x.com/lutfiikbal21"
               className="p-3 bg-gray-800 rounded-lg hover:bg-sky-500 transition-colors"
             >
@@ -74,6 +77,7 @@ const AboutSection = () => {
             </a>
             <a
               href="mailto:lutfiikbalmajid2@gmail.com"
+              aria-label="Lutfi's Email"
               className="p-3 bg-gray-800 rounded-lg hover:bg-red-500 transition-colors"
             >
               <FiMail className="w-6 h-6" />

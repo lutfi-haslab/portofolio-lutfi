@@ -1,6 +1,7 @@
 ---
 title: Build Smart Contract REST API
 date: 2025-05-08T17:50:00.000Z
+description: Build Smart Contract REST API using Truffle and Tomochain
 tags:
   - smartcontract
   - blockchain

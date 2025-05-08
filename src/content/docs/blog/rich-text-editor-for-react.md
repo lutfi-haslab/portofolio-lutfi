@@ -1,6 +1,7 @@
 ---
 title: "Rich Text Editor for React or NextJS"
 date: 2025-05-08T17:55:00.000Z
+description: Rich Text Editor for React or NextJS. This is a demo of how to use the Slate.js library to create a rich text editor in a React or Next.js application. The example includes a simple text editor with basic formatting options like bold, italic, underline, and strikethrough. It also includes a more advanced formatting option like adding an image.
 tags:
   - rich
   - texteditor
