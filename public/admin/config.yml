@@ -4,26 +4,50 @@ backend:
   repo: lutfi-haslab/portofolio-lutfi
 
 
-media_folder: "src/assets/images" # Location where files will be stored in the repo
-public_folder: "src/assets/images" # The src attribute for uploaded media
+media_folder: "src/assets/images" 
+public_folder: "../../../assets/images" 
 
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Used in the UI
-    folder: "src/content/docs/blog" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
+  - name: "blog" 
+    label: "Blog" 
+    folder: "src/content/docs/blog" 
+    create: true 
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     extension: md
     identifier_field: "title"
-    fields: # The fields for each document, usually in frontmatter
-      - { label: "Title", name: "title", widget: "string", default: "My blog post" }
-      - { label: "Publish Date", name: "date", widget: "datetime", default: "2023-07-24" }
-      - { label: "Authors", name: "authors", widget: "list", fields: [
-          { name: name, label: Name, widget: select, options: ["lutfi"], default: ["lutfi"] }
-        ] }
-        
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Authors", name: "authors", widget: "list", default: ["lutfi"] }
       - { label: "Cover", name: "cover", widget: "object", fields: [
-          { label: "Image", name: "image", widget: "image", default: "../../../assets/blogging.jpg" },
-          { label: "Alt", name: "alt", widget: "string", default: "A blog cover image" }
+          { label: "Image", name: "image", widget: "image" },
+          { label: "Alt Text", name: "alt", widget: "string" }
         ] }
-      - { label: "Body", name: "body", widget: "markdown", default: "Hello world!" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "knowledge-base"
+    label: "Knowledge Base"
+    folder: "src/content/docs/knowledge-base"
+    create: true
+    extension: md
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Authors", name: "authors", widget: "list", default: ["lutfi"] }
+      - { label: "Body", name: "body", widget: "markdown" }
+  
+  - name: "project"
+    label: "Project"
+    folder: "src/content/docs/project"
+    create: true
+    extension: md
+    identifier_field: "title"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Authors", name: "authors", widget: "list", default: ["lutfi"] }
+      - { label: "Body", name: "body", widget: "markdown" }
+    
