@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://portofolio-lutfi.netlify.app/sitemap-index.xml
