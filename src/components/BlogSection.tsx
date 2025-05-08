@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../utils/animHelper";
 import BlogComponent, { type BlogItemFeed } from "./BlogComponent";
 
-
-const BlogSection = ({blogs}: {blogs: BlogItemFeed[]}) => {
+const BlogSection = ({ blogs }: { blogs: BlogItemFeed[] }) => {
   return (
     <motion.section
       id="blog"
@@ -24,18 +23,23 @@ const BlogSection = ({blogs}: {blogs: BlogItemFeed[]}) => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogs?.slice(0, 3).map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden hover:border-emerald-400/30 transition-colors"
-          >
-            <BlogComponent item={item} />
-          </motion.div>
-        ))}
+        {blogs
+          ?.sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          )
+          .slice(0, 6)
+          .map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden hover:border-emerald-400/30 transition-colors"
+            >
+              <BlogComponent item={item} />
+            </motion.div>
+          ))}
       </div>
 
       <div className="mt-12 text-center">
