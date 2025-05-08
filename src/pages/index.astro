@@ -1,0 +1,53 @@
+---
+import AboutSection from "../components/AboutSection";
+import BlogSection from "../components/BlogSection";
+import ContactSection from "../components/ContactSection";
+import Header from "../components/Header";
+import HeroSection from "../components/HeroSection";
+import ProjectSection from "../components/ProjectSection";
+import Layout from "../layout/Layout.astro";
+import sanitizeHtml from "sanitize-html";
+import MarkdownIt from "markdown-it";
+const parser = new MarkdownIt();
+
+import { getCollection } from "astro:content";
+import type { BlogItemFeed } from "../components/BlogComponent";
+const blogPosts = await getCollection("docs");
+const posts = blogPosts
+  .filter((post) => post.filePath?.includes("blog"))
+  .map((post) => ({
+    link: post.id,
+    // Note: this will not process components or JSX expressions in MDX files.
+    content: sanitizeHtml(parser.render(post.body as string), {
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+    }),
+    ...post.data,
+  }));
+---
+
+<Layout>
+  {/* Animated Background */}
+  <div class="fixed inset-0 overflow-hidden -z-10">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 opacity-90"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"
+    >
+    </div>
+  </div>
+  <Header client:load />
+  <main class="container mx-auto px-6 py-12">
+    {/* Hero Section */}
+    <HeroSection client:load />
+    {/* About Section */}
+    <AboutSection client:load />
+    {/* Projects Section */}
+    <ProjectSection client:load />
+    {/* Blog Section */}
+    <BlogSection blogs={posts as BlogItemFeed[]} client:load />
+    {/* Contact Section */}
+    <ContactSection client:load />
+  </main>
+</Layout>
