@@ -16,14 +16,11 @@ collections:
     extension: md
     identifier_field: "title"
     fields: # The fields for each document, usually in frontmatter
-      - { label: "Title", name: "title", widget: "string", default: "My blog post" }
-      - { label: "Publish Date", name: "date", widget: "datetime", default: "2023-07-24" }
-      - { label: "Authors", name: "authors", widget: "list", fields: [
-          { name: name, label: Name, widget: select, options: ["lutfi"], default: ["lutfi"] }
-        ] }
-        
-      - { label: "Cover", name: "cover", widget: "object", fields: [
-          { label: "Image", name: "image", widget: "image", default: "../../../assets/blogging.jpg" },
-          { label: "Alt", name: "alt", widget: "string", default: "A blog cover image" }
-        ] }
-      - { label: "Body", name: "body", widget: "markdown", default: "Hello world!" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Authors", name: "authors", widget: "list", default: ["lutfi"] }
+      # - { label: "Cover", name: "cover", widget: "object", fields: [
+      #     { label: "Image", name: "image", widget: "image" },
+      #     { label: "Alt Text", name: "alt", widget: "string" }
+      #   ] }
+      - { label: "Body", name: "body", widget: "markdown" }
