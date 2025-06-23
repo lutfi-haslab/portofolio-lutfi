@@ -9,7 +9,7 @@ date: 2025-06-23T15:02:00.000Z
 authors:
   - lutfi
 cover:
-  image: https://res.cloudinary.com/haslab/image/upload/v1750665911/Vibe_Coding_Tools_sogqjh.png
+  image: ../../../assets/images/"Vibe Coding Tools.png"
   alt: "Vibe Coding src: Dezdok"
 ---
 The software development landscape is experiencing a seismic shift in 2025, and it has a name: **vibe coding**. This revolutionary approach to programming is changing how we think about software development, making it more accessible while sparking intense debates about the future of coding itself.
