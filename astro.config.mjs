@@ -15,7 +15,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
     site: "https://portofolio-lutfi.netlify.app",
     image: {
-        domains: ["cloudinary.com"],
+        domains: ["res.cloudinary.com"],
         remotePatterns: [{ protocol: "https" }]
     },
     integrations: [starlight({
