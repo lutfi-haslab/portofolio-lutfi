@@ -14,6 +14,10 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
     site: "https://portofolio-lutfi.netlify.app",
+    image: {
+        domains: ["cloudinary.com"],
+        remotePatterns: [{ protocol: "https" }]
+    },
     integrations: [starlight({
         title: 'HasLab by Lutfi',
         social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/lutfi-haslab' }],
