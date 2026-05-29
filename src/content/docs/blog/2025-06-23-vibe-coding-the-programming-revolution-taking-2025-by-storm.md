@@ -1,17 +1,18 @@
 ---
-title: "Vibe Coding: The Programming Revolution Taking 2025 by Storm"
-description: "The software development landscape is experiencing a seismic shift
-  in 2025, and it has a name: vibe coding. This revolutionary approach to
-  programming is changing how we think about software development, making it
-  more accessible while sparking intense debates about the future of coding
-  itself."
+title: 'Vibe Coding: The Programming Revolution Taking 2025 by Storm'
+description: 'The software development landscape is experiencing a seismic shift
+    in 2025, and it has a name: vibe coding. This revolutionary approach to
+    programming is changing how we think about software development, making it
+    more accessible while sparking intense debates about the future of coding
+    itself.'
 date: 2025-06-23T15:02:00.000Z
 authors:
-  - lutfi
+    - lutfi
 cover:
-  image: ../../../assets/images/Vibe_Coding_Tools.png
-  alt: "Vibe Coding src: Dezdok"
+    image: ../../../assets/images/Vibe_Coding_Tools.png
+    alt: 'Vibe Coding src: Dezdok'
 ---
+
 The software development landscape is experiencing a seismic shift in 2025, and it has a name: **vibe coding**. This revolutionary approach to programming is changing how we think about software development, making it more accessible while sparking intense debates about the future of coding itself.
 
 ## What Exactly is Vibe Coding?
@@ -120,4 +121,4 @@ The vibe coding trend is here to stay, but it's not the end of programming as we
 
 ---
 
-*What are your thoughts on vibe coding? Have you experimented with AI-assisted development in your projects? The conversation about the future of programming is just getting started.*
+_What are your thoughts on vibe coding? Have you experimented with AI-assisted development in your projects? The conversation about the future of programming is just getting started._

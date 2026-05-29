@@ -1,11 +1,11 @@
 ---
 title: HasLab Face Recognition System
 description: A robust face recognition system with liveness detection built
-  using InsightFace and OpenCV. This project provides a secure and efficient way
-  to manage facial recognition with anti-spoofing capabilities.
+    using InsightFace and OpenCV. This project provides a secure and efficient way
+    to manage facial recognition with anti-spoofing capabilities.
 date: 2025-05-09T14:54:00.000Z
 authors:
-  - lutfi
+    - lutfi
 ---
 
 A robust face recognition system with liveness detection built using InsightFace and OpenCV. This project provides a secure and efficient way to manage facial recognition with anti-spoofing capabilities.

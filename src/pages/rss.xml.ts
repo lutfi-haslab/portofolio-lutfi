@@ -5,7 +5,9 @@ import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
 
 export async function GET(context: any) {
-    const blog = await getCollection('docs');
+    const blog = (await getCollection('docs')).filter((post) =>
+        post.id.startsWith('blog/')
+    );
     return rss({
         title: 'Buzz’s Blog',
         description: 'A humble Astronaut’s guide to the stars',
@@ -13,8 +15,8 @@ export async function GET(context: any) {
         items: blog.map((post) => ({
             link: post.id,
             // Note: this will not process components or JSX expressions in MDX files.
-            content: sanitizeHtml(parser.render(post.body as string), {
-                allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
+            content: sanitizeHtml(parser.render(post.body || ''), {
+                allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
             }),
             ...post.data,
         })),

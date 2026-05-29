@@ -3,12 +3,12 @@ title: Build Smart Contract REST API
 date: 2025-05-08T17:50:00.000Z
 description: Build Smart Contract REST API using Truffle and Tomochain
 tags:
-  - smartcontract
-  - blockchain
-  - contract
-  - solidity
+    - smartcontract
+    - blockchain
+    - contract
+    - solidity
 authors:
-  - lutfi
+    - lutfi
 ---
 
 Blockchain and smart contracts are two of the most innovative technologies of the 21st century, and have the potential to revolutionize a wide range of industries, from finance and healthcare to supply chain management and real estate.
@@ -38,7 +38,7 @@ npm i -g truffle
 yarn global add truffle
 ```
 
-there are two way to get started with truffle, *truffle init* or *truffle unbox*
+there are two way to get started with truffle, _truffle init_ or _truffle unbox_
 
 ```bash
 truffle init
@@ -48,7 +48,7 @@ truffle unbox
 
 ![build-smart-contract-api](../../../assets/images/0-4s9jgjhnuv5dcm-6.webp)
 
-next is to install package *truffle-hdwallet-provider*
+next is to install package _truffle-hdwallet-provider_
 
 ```bash
 npm i truffle-hdwallet-provider
@@ -59,53 +59,53 @@ yarn add truffle-hdwallet-provider
 In this practice, we will use tomochain as a network blockchain, so we must add a network chain to the truffle configuration.
 
 ```javascript
-'use strict'
-var HDWalletProvider = require("truffle-hdwallet-provider");
-require('dotenv').config()
+'use strict';
+var HDWalletProvider = require('truffle-hdwallet-provider');
+require('dotenv').config();
 
 var mnemonic = process.env.MNEMONIC;
 
 module.exports = {
-  compilers: {
-    solc: {
-      version: "^0.8.0"
-    }
-  },
-  networks: {
-    development: {
-      provider: () => new HDWalletProvider(
-        mnemonic,
-        "http://127.0.0.1:8545",
-      ),
-      host: "127.0.0.1",
-      port: "8545",
-      network_id: "*", // Match any network id
+    compilers: {
+        solc: {
+            version: '^0.8.0',
+        },
     },
-    tomotestnet: {
-      provider: () => new HDWalletProvider(
-        mnemonic,
-        "https://rpc.testnet.tomochain.com",
-        0,
-        true,
-        "m/44'/889'/0'/0/"
-      ),
-      network_id: "89",
-      gas: 2000000,
-      gasPrice: 10000000000
+    networks: {
+        development: {
+            provider: () =>
+                new HDWalletProvider(mnemonic, 'http://127.0.0.1:8545'),
+            host: '127.0.0.1',
+            port: '8545',
+            network_id: '*', // Match any network id
+        },
+        tomotestnet: {
+            provider: () =>
+                new HDWalletProvider(
+                    mnemonic,
+                    'https://rpc.testnet.tomochain.com',
+                    0,
+                    true,
+                    "m/44'/889'/0'/0/"
+                ),
+            network_id: '89',
+            gas: 2000000,
+            gasPrice: 10000000000,
+        },
+        tomomainnet: {
+            provider: () =>
+                new HDWalletProvider(
+                    mnemonic,
+                    'https://rpc.tomochain.com',
+                    0,
+                    true,
+                    "m/44'/889'/0'/0/"
+                ),
+            network_id: '88',
+            gas: 2000000,
+            gasPrice: 10000000000000,
+        },
     },
-    tomomainnet: {
-      provider: () => new HDWalletProvider(
-        mnemonic,
-        "https://rpc.tomochain.com",
-        0,
-        true,
-        "m/44'/889'/0'/0/",
-      ),
-      network_id: "88",
-      gas: 2000000,
-      gasPrice: 10000000000000,
-    }
-  }
 };
 ```
 
@@ -114,7 +114,7 @@ change MNEMONIC env with your mnemonic wallet, more info here [link](https://met
 ## Create Smart Contract
 
 We will create a smart contract inside folder **contract** with name JsonArray.sol.
-The contract has functions such as storeData() to adding Array data, getAllData() to getting all data, getData() to getting data by Id and also getArrayLength() to getting data length. 
+The contract has functions such as storeData() to adding Array data, getAllData() to getting all data, getData() to getting data by Id and also getArrayLength() to getting data length.
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -152,10 +152,10 @@ it will compile all Smart Contract inside folder contract.
 next we will deploy the smart contract by creating a file in the migrations folder with the name 1_migration.js
 
 ```javascript
-const JsonArray = artifacts.require("JsonArray")
+const JsonArray = artifacts.require('JsonArray');
 
-module.exports = function(deployer) {
-  deployer.deploy(JsonArray);
+module.exports = function (deployer) {
+    deployer.deploy(JsonArray);
 };
 ```
 
@@ -221,107 +221,109 @@ Since tomochain uses the forked ethereum network, 1 TOMO = 1 ETH but has a diffe
 
 ## Calling Smart Contract function
 
-To test your smart contract directly, you can use the online remix idea [Remix-Eth-IDE](https://remix.ethereum.org/). 
+To test your smart contract directly, you can use the online remix idea [Remix-Eth-IDE](https://remix.ethereum.org/).
 This time we will use web3.js, just create an api folder, and add the index.js file
 
 ```javascript
-const Web3 = require('web3')
-require('dotenv').config()
-const provider = new Web3.providers.HttpProvider('https://rpc.testnet.tomochain.com')
-const web3 = new Web3(provider)
+const Web3 = require('web3');
+require('dotenv').config();
+const provider = new Web3.providers.HttpProvider(
+    'https://rpc.testnet.tomochain.com'
+);
+const web3 = new Web3(provider);
 
-const contractAddress = "0x6f3c30D1151216BCEA768c0a35c99d9775d576bF";
+const contractAddress = '0x6f3c30D1151216BCEA768c0a35c99d9775d576bF';
 const abi = [
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "jsonDataArray",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_jsonData",
-        "type": "string"
-      }
-    ],
-    "name": "storeData",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getAllData",
-    "outputs": [
-      {
-        "internalType": "string[]",
-        "name": "",
-        "type": "string[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "index",
-        "type": "uint256"
-      }
-    ],
-    "name": "getData",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "getArrayLength",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  }
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        name: 'jsonDataArray',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+        constant: true,
+    },
+    {
+        inputs: [
+            {
+                internalType: 'string',
+                name: '_jsonData',
+                type: 'string',
+            },
+        ],
+        name: 'storeData',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'getAllData',
+        outputs: [
+            {
+                internalType: 'string[]',
+                name: '',
+                type: 'string[]',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+        constant: true,
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'index',
+                type: 'uint256',
+            },
+        ],
+        name: 'getData',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+        constant: true,
+    },
+    {
+        inputs: [],
+        name: 'getArrayLength',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+        constant: true,
+    },
 ];
 
 const privateKey = process.env.WALLET_PRIVATE_KEY;
 // Unlock wallet by private key
-const account = web3.eth.accounts.privateKeyToAccount(privateKey)
-let coinbase = account.address
+const account = web3.eth.accounts.privateKeyToAccount(privateKey);
+let coinbase = account.address;
 web3.eth.accounts.wallet.add(privateKey);
-web3.eth.defaultAccount = coinbase
-console.log(coinbase)
+web3.eth.defaultAccount = coinbase;
+console.log(coinbase);
 ```
 
 > HttpProvider is the rpc network url of the chain to be used.
@@ -335,36 +337,45 @@ next is call function getAllData() and storeData() with dummy data using self ex
 ```javascript
 const contract = new web3.eth.Contract(abi, contractAddress);
 (async () => {
-  // Calling function getAllData()
-  await contract.methods.getAllData().call().then((v) => {
-    const parsedData = v.map(jsonString => JSON.parse(jsonString));
-    console.log(parsedData)
-  })
+    // Calling function getAllData()
+    await contract.methods
+        .getAllData()
+        .call()
+        .then((v) => {
+            const parsedData = v.map((jsonString) => JSON.parse(jsonString));
+            console.log(parsedData);
+        });
 
-  // Add data storeData()
-  const dataDummy = {
-    name: "John Doe",
-    age: 30
-  }
+    // Add data storeData()
+    const dataDummy = {
+        name: 'John Doe',
+        age: 30,
+    };
 
-  const gasAmount = await contract.methods.storeData(JSON.stringify(dataDummy)).estimateGas({ from: coinbase });
+    const gasAmount = await contract.methods
+        .storeData(JSON.stringify(dataDummy))
+        .estimateGas({ from: coinbase });
 
-  const tx = {
-    from: coinbase,
-    to: contractAddress,
-    gas: Number(gasAmount),
-    data: contract.methods.storeData(JSON.stringify(dataDummy)).encodeABI()
-  }
+    const tx = {
+        from: coinbase,
+        to: contractAddress,
+        gas: Number(gasAmount),
+        data: contract.methods.storeData(JSON.stringify(dataDummy)).encodeABI(),
+    };
 
-  const signature = await web3.eth.accounts.signTransaction(tx, privateKey);
-  await web3.eth.sendSignedTransaction(signature.rawTransaction).on("receipt", (receipt) => {
-    // Data after sign storeData()
-    contract.methods.getAllData().call().then(v => {
-      console.log({ message: v, receipt });
-    });
-  })
-
-})()
+    const signature = await web3.eth.accounts.signTransaction(tx, privateKey);
+    await web3.eth
+        .sendSignedTransaction(signature.rawTransaction)
+        .on('receipt', (receipt) => {
+            // Data after sign storeData()
+            contract.methods
+                .getAllData()
+                .call()
+                .then((v) => {
+                    console.log({ message: v, receipt });
+                });
+        });
+})();
 ```
 
 you will get response with receipt and state data before & after
@@ -413,171 +424,182 @@ yarn add body-parser
 here is minimal express API
 
 ```javascript
-const express = require('express')
-const app = express()
-const port = 3001
+const express = require('express');
+const app = express();
+const port = 3001;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+    res.send('Hello World!');
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+    console.log(`Example app listening on port ${port}`);
+});
 ```
 
 here is the full code for the rest API
 
 ```javascript
-const Web3 = require('web3')
-const express = require('express')
-var bodyParser = require('body-parser')
-require('dotenv').config()
-const app = express()
-const port = 3001
+const Web3 = require('web3');
+const express = require('express');
+var bodyParser = require('body-parser');
+require('dotenv').config();
+const app = express();
+const port = 3001;
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
+const provider = new Web3.providers.HttpProvider(
+    'https://rpc.testnet.tomochain.com'
+);
+const web3 = new Web3(provider);
 
-const provider = new Web3.providers.HttpProvider('https://rpc.testnet.tomochain.com')
-const web3 = new Web3(provider)
-
-const contractAddress = "0x6f3c30D1151216BCEA768c0a35c99d9775d576bF";
+const contractAddress = '0x6f3c30D1151216BCEA768c0a35c99d9775d576bF';
 const abi = [
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "jsonDataArray",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_jsonData",
-        "type": "string"
-      }
-    ],
-    "name": "storeData",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getAllData",
-    "outputs": [
-      {
-        "internalType": "string[]",
-        "name": "",
-        "type": "string[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "index",
-        "type": "uint256"
-      }
-    ],
-    "name": "getData",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "getArrayLength",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  }
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        name: 'jsonDataArray',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+        constant: true,
+    },
+    {
+        inputs: [
+            {
+                internalType: 'string',
+                name: '_jsonData',
+                type: 'string',
+            },
+        ],
+        name: 'storeData',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+    },
+    {
+        inputs: [],
+        name: 'getAllData',
+        outputs: [
+            {
+                internalType: 'string[]',
+                name: '',
+                type: 'string[]',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+        constant: true,
+    },
+    {
+        inputs: [
+            {
+                internalType: 'uint256',
+                name: 'index',
+                type: 'uint256',
+            },
+        ],
+        name: 'getData',
+        outputs: [
+            {
+                internalType: 'string',
+                name: '',
+                type: 'string',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+        constant: true,
+    },
+    {
+        inputs: [],
+        name: 'getArrayLength',
+        outputs: [
+            {
+                internalType: 'uint256',
+                name: '',
+                type: 'uint256',
+            },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+        constant: true,
+    },
 ];
 
 const privateKey = process.env.WALLET_PRIVATE_KEY;
 // Unlock wallet by private key
-const account = web3.eth.accounts.privateKeyToAccount(privateKey)
-let coinbase = account.address
+const account = web3.eth.accounts.privateKeyToAccount(privateKey);
+let coinbase = account.address;
 web3.eth.accounts.wallet.add(privateKey);
-web3.eth.defaultAccount = coinbase
-console.log(coinbase)
+web3.eth.defaultAccount = coinbase;
+console.log(coinbase);
 
 const contract = new web3.eth.Contract(abi, contractAddress);
 
-
 // call getAllData()
 app.get('/', async (req, res) => {
-  await contract.methods.getAllData().call().then((v) => {
-    const parsedData = v.map(jsonString => JSON.parse(jsonString));
+    await contract.methods
+        .getAllData()
+        .call()
+        .then((v) => {
+            const parsedData = v.map((jsonString) => JSON.parse(jsonString));
 
-    return res.json({ message: parsedData });
-  });
-})
+            return res.json({ message: parsedData });
+        });
+});
 
 // call getData()
 app.get('/:id', async (req, res) => {
-  await contract.methods.getData(req.params.id).call().then((v) => {
-    return res.json({ message: JSON.parse(v) });
-  });
-})
+    await contract.methods
+        .getData(req.params.id)
+        .call()
+        .then((v) => {
+            return res.json({ message: JSON.parse(v) });
+        });
+});
 
 app.post('/', async (req, res) => {
-  const { ...data } = req.body
-  const gasAmount = await contract.methods.storeData(JSON.stringify(data)).estimateGas({ from: coinbase });
+    const { ...data } = req.body;
+    const gasAmount = await contract.methods
+        .storeData(JSON.stringify(data))
+        .estimateGas({ from: coinbase });
 
-  const tx = {
-    from: coinbase,
-    to: contractAddress,
-    gas: Number(gasAmount),
-    data: contract.methods.storeData(JSON.stringify(data)).encodeABI()
-  }
+    const tx = {
+        from: coinbase,
+        to: contractAddress,
+        gas: Number(gasAmount),
+        data: contract.methods.storeData(JSON.stringify(data)).encodeABI(),
+    };
 
-  const signature = await web3.eth.accounts.signTransaction(tx, privateKey);
-  await web3.eth.sendSignedTransaction(signature.rawTransaction).on("receipt", (receipt) => {
-    contract.methods.getAllData().call().then(v => {
-      return res.json({ message: v, receipt });
-    });
-  })
-
-})
-
+    const signature = await web3.eth.accounts.signTransaction(tx, privateKey);
+    await web3.eth
+        .sendSignedTransaction(signature.rawTransaction)
+        .on('receipt', (receipt) => {
+            contract.methods
+                .getAllData()
+                .call()
+                .then((v) => {
+                    return res.json({ message: v, receipt });
+                });
+        });
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+    console.log(`Example app listening on port ${port}`);
+});
 ```
 
 run the server with

@@ -1,11 +1,11 @@
 ---
-title: "Docker and Docker Compose: A Practical Guide for Modern Software Engineering"
+title: 'Docker and Docker Compose: A Practical Guide for Modern Software Engineering'
 description: This document outlines Docker’s core functionality, real-world use
-  cases, and how Docker Compose simplifies multi-service application
-  development.
+    cases, and how Docker Compose simplifies multi-service application
+    development.
 date: 2025-05-09T08:54:00.000Z
 authors:
-  - lutfi
+    - lutfi
 ---
 
 ## Overview
@@ -21,7 +21,7 @@ At its core, Docker abstracts OS-level virtualization, allowing you to run isola
 Key Components:
 
 | Component        | Description                                                                   |
-| ---------------- | ---------------------------- |
+| ---------------- | ----------------------------------------------------------------------------- |
 | Docker Engine    | Core daemon that manages images, containers, and communication with the CLI.  |
 | Docker Image     | Immutable blueprint containing application code, libraries, and dependencies. |
 | Docker Container | A runtime instance of a Docker image.                                         |
@@ -40,19 +40,19 @@ CMD ["npm", "start"]
 
 2. Why Use Docker?
 
-Benefit	Description
-Portability	Consistent across dev, staging, and production environments.
-Isolation	Containers are isolated from each other and the host system.
-Scalability	Compatible with Kubernetes and other orchestrators for scaling.
-Speed	Lightweight compared to full VMs; rapid deployment and CI/CD.
-Reproducibility	Infrastructure as code—everything defined via Dockerfiles or Compose.
+Benefit Description
+Portability Consistent across dev, staging, and production environments.
+Isolation Containers are isolated from each other and the host system.
+Scalability Compatible with Kubernetes and other orchestrators for scaling.
+Speed Lightweight compared to full VMs; rapid deployment and CI/CD.
+Reproducibility Infrastructure as code—everything defined via Dockerfiles or Compose.
 
 3. Real-World Use Cases
 
-* Microservices: Run each microservice in its own container.
-* Dev Environments: Spin up consistent dev environments instantly.
-* CI/CD Pipelines: Build/test/deploy apps in isolated containers.
-* Legacy App Modernization: Wrap legacy apps with Docker for easier deployment.
+- Microservices: Run each microservice in its own container.
+- Dev Environments: Spin up consistent dev environments instantly.
+- CI/CD Pipelines: Build/test/deploy apps in isolated containers.
+- Legacy App Modernization: Wrap legacy apps with Docker for easier deployment.
 
 4. Introduction to Docker Compose
 
@@ -60,9 +60,9 @@ While Docker handles individual containers, Docker Compose orchestrates multi-co
 
 Compose Features:
 
-* Define services, networks, and volumes in a declarative format.
-* Bring up entire stacks with docker-compose up.
-* Supports variable substitution and override files (docker-compose.override.yml).
+- Define services, networks, and volumes in a declarative format.
+- Bring up entire stacks with docker-compose up.
+- Supports variable substitution and override files (docker-compose.override.yml).
 
 Sample docker-compose.yml:
 
@@ -93,27 +93,27 @@ volumes:
 
 Commands:
 
-| Command              | Description               |
-| -------------------- | ----------------------------- |
-| docker-compose up    | Builds and starts the services |      |
+| Command              | Description                            |
+| -------------------- | -------------------------------------- | --- |
+| docker-compose up    | Builds and starts the services         |     |
 | docker-compose down  | Stops and removes containers, networks |
-| docker-compose build | Rebuilds the images    |
-| docker-compose logs  | Shows logs for all services  |      
+| docker-compose build | Rebuilds the images                    |
+| docker-compose logs  | Shows logs for all services            |
 
 5. Best Practices
 
-* Use .dockerignore to exclude unnecessary files from builds.
-* Keep images lean by using Alpine or distroless base images.
-* Avoid latest tags in production—use pinned versions.
-* Use named volumes for persistent data instead of binding to local directories.
-* Leverage multi-stage builds to separate build-time and runtime dependencies.
+- Use .dockerignore to exclude unnecessary files from builds.
+- Keep images lean by using Alpine or distroless base images.
+- Avoid latest tags in production—use pinned versions.
+- Use named volumes for persistent data instead of binding to local directories.
+- Leverage multi-stage builds to separate build-time and runtime dependencies.
 
 6. Limitations & Considerations
 
-* Not a VM replacement: Docker is not suited for heavy OS-level customization.
-* Security model: Containers share the host kernel—beware of privilege escalation.
-* Network performance: Inter-container networking can introduce latency.
-* Statefulness: Stateful applications require careful volume and backup planning.
+- Not a VM replacement: Docker is not suited for heavy OS-level customization.
+- Security model: Containers share the host kernel—beware of privilege escalation.
+- Network performance: Inter-container networking can introduce latency.
+- Statefulness: Stateful applications require careful volume and backup planning.
 
 Conclusion
 

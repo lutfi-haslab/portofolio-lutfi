@@ -1,40 +1,66 @@
 ---
-import "../styles/global.css";
-const { title } = Astro.props;
+import '../styles/global.css';
 
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const siteTitle = title
+    ? `${title} | Lutfi Ikbal Majid`
+    : 'Lutfi Ikbal Majid | Software Developer & Tech Enthusiast';
+const siteDescription =
+    description ||
+    'Portfolio of Lutfi Ikbal Majid, an experienced Software Developer specializing in Web Applications, IoT, and Blockchain. Engineering graduate from Telkom University (Teknik Fisika) working as a Software Developer at Peruri.';
+const siteKeywords =
+    'lutfi, ikbal, majid, lutfiikbalmajid, peruri, telkom university, teknik fisika, software developer, iot, blockchain, web developer, frontend engineer, fullstack developer, portfolio, haslab';
+
+const canonicalURL = new URL(
+    Astro.url.pathname,
+    Astro.site || 'https://lutfiikbalmajid.pages.dev'
+);
+const ogImageUrl = new URL('/og-image.png', canonicalURL).toString();
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Portofolio Lutfi, a software engineer and web developer. I have experiences in developing web applications and mobile applications using React, React Native, Node.js, Express, MongoDB, and more. I am a team player and have a strong passion for developing high-quality software."
-    />
-    <meta
-      name="keywords"
-      content="Lutfi, Lutfi Haslab, Lutfi Haslab Portofolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio, Lutfi Haslab Portfolio"
-    />
-    <meta
-      name="author"
-      content="Lutfi"
-    />
-    <meta
-      name="robots"
-      content="index,follow"
-    />
-    <meta
-      name="googlebot"
-      content="index,follow"
-    />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <title>{title ? `${title} | ` : ``}Portofolio Lutfi</title>
-  </head>
-  <body>
-    <div id="home" class="bg-gray-900 text-gray-100 min-h-screen">
-      <slot />
-    </div>
-  </body>
-  <style></style>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Primary Meta Tags -->
+        <title>{siteTitle}</title>
+        <meta name="title" content={siteTitle} />
+        <meta name="description" content={siteDescription} />
+        <meta name="keywords" content={siteKeywords} />
+        <meta name="author" content="Lutfi Ikbal Majid" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={siteTitle} />
+        <meta property="og:description" content={siteDescription} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:site_name" content="Lutfi Ikbal Majid Portfolio" />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={canonicalURL} />
+        <meta property="twitter:title" content={siteTitle} />
+        <meta property="twitter:description" content={siteDescription} />
+        <meta property="twitter:image" content={ogImageUrl} />
+
+        <link rel="canonical" href={canonicalURL} />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    </head>
+
+    <body>
+        <div id="home" class="bg-gray-900 text-gray-100 min-h-screen">
+            <slot />
+        </div>
+    </body>
 </html>

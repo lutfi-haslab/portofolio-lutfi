@@ -1,12 +1,12 @@
 ---
 title: How to Analyze and Clean Disk Space on macOS Using `ncdu` and `df`
 description: Keeping your macOS system clean and your disk space under control
-  is essential — especially when you're building large projects like Xcode apps
-  or using environments like Node.js. In this post, you'll learn how to inspect,
-  analyze, and free up space using `ncdu` and `df`.
+    is essential — especially when you're building large projects like Xcode apps
+    or using environments like Node.js. In this post, you'll learn how to inspect,
+    analyze, and free up space using `ncdu` and `df`.
 date: 2025-06-16T09:45:00.000Z
 authors:
-  - lutfi
+    - lutfi
 ---
 
 ````markdown
@@ -20,6 +20,7 @@ Keeping your macOS system clean and your disk space under control is essential �
 
 ```bash
 brew install ncdu
+```
 ````
 
 ## 🔍 Step 2: Scan Your Home Directory
@@ -32,10 +33,10 @@ ncdu ~
 
 This will launch an interactive UI where you can:
 
-* Browse hidden files and folders
-* Sort by size
-* Delete files interactively (press `d`)
-* Navigate folders (`Enter`, `q` to quit)
+- Browse hidden files and folders
+- Sort by size
+- Delete files interactively (press `d`)
+- Navigate folders (`Enter`, `q` to quit)
 
 ## 💽 Step 3: Check Overall Disk Space with `df`
 
@@ -54,9 +55,9 @@ Filesystem      Size   Used  Avail Capacity  Mounted on
 
 This tells you:
 
-* Total size of your disk
-* How much is used
-* How much is available
+- Total size of your disk
+- How much is used
+- How much is available
 
 ## 🧹 Step 4: Clean Common Large Directories
 

@@ -1,17 +1,17 @@
 ---
-title: "Rich Text Editor for React or NextJS"
+title: 'Rich Text Editor for React or NextJS'
 date: 2025-05-08T17:55:00.000Z
 description: Rich Text Editor for React or NextJS. This is a demo of how to use the Slate.js library to create a rich text editor in a React or Next.js application. The example includes a simple text editor with basic formatting options like bold, italic, underline, and strikethrough. It also includes a more advanced formatting option like adding an image.
 tags:
-  - rich
-  - texteditor
-  - editor
-  - react
-  - s3
-  - aws
-  - nextjs
+    - rich
+    - texteditor
+    - editor
+    - react
+    - s3
+    - aws
+    - nextjs
 authors:
-  - lutfi
+    - lutfi
 ---
 
 !["quill rich text editor"](https://miro.medium.com/v2/resize:fit:1400/1*KxknuOmsXhpCXIlcjV45MA.png)
@@ -334,28 +334,41 @@ Then I added a useState handler to save changes:
 
 ```typescript
 const [value, setValue] = useState('');
-const quillRef = useRef<ReactQuill>(null)
+const quillRef = useRef<ReactQuill>(null);
 ```
 
- also added modules for the toolbar, which will shown in the Header of Editor:
+also added modules for the toolbar, which will shown in the Header of Editor:
 
 ```typescript
-  const modules = useMemo(() => ({
-    toolbar: {
-      container: [
-        [{ header: '1' }, { header: '2' }, { header: [3, 4, 5, 6] }, { font: [] }],
-        [{ size: [] }],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-        ['link', 'image', 'video'],
-        ['clean'],
-        ['code-block']
-      ],
-      handlers: {
-        image: imageHandler,
-      }
-    }
-  }), [])
+const modules = useMemo(
+    () => ({
+        toolbar: {
+            container: [
+                [
+                    { header: '1' },
+                    { header: '2' },
+                    { header: [3, 4, 5, 6] },
+                    { font: [] },
+                ],
+                [{ size: [] }],
+                [
+                    { list: 'ordered' },
+                    { list: 'bullet' },
+                    { indent: '-1' },
+                    { indent: '+1' },
+                ],
+                ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                ['link', 'image', 'video'],
+                ['clean'],
+                ['code-block'],
+            ],
+            handlers: {
+                image: imageHandler,
+            },
+        },
+    }),
+    []
+);
 ```
 
 And called the ReactQuill component:
@@ -372,7 +385,7 @@ And called the ReactQuill component:
  </div>
 ```
 
-![quill](../../../assets/images/content/screenshot-2023-12-20-124948.png "quill")
+![quill](../../../assets/images/content/screenshot-2023-12-20-124948.png 'quill')
 
 How was it? It's good right?
 
@@ -381,66 +394,65 @@ Next we will add an image upload handler, using S3, as seen there is an image ic
 ```typescript
 const AWS_S3_BUCKET = process.end.NEXT_PUBLIC_bucket;
 const s3 = new AWS.S3({
-  region: "auto",
-  accessKeyId: process.env.NEXT_PUBLIC_accessKeyId,
-  secretAccessKey: process.env.NEXT_PUBLIC_secretAccessKey,
-  endpoint: process.env.NEXT_PUBLIC_S3_endpoint,
+    region: 'auto',
+    accessKeyId: process.env.NEXT_PUBLIC_accessKeyId,
+    secretAccessKey: process.env.NEXT_PUBLIC_secretAccessKey,
+    endpoint: process.env.NEXT_PUBLIC_S3_endpoint,
 });
 ```
 
 Then added an imageHandler function:
 
 ```typescript
-  const imageHandler = () => {
-
+const imageHandler = () => {
     const editor = (quillRef as any)?.current.getEditor();
     if (typeof document !== 'undefined') {
-      const input = document.createElement("input");
-      input.setAttribute("type", "file");
-      input.setAttribute("accept", "image/*");
-      input.click();
+        const input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.click();
 
-      input.onchange = async () => {
-        const file = (input as any)?.files[0];
-        if (/^image\//.test(file.type)) {
-          console.log(file);
-          const key = crypto.randomBytes(5).toString('hex') + file.name;
-          const url = process.env.NEXT_PUBLIC_S3_endpoint;
-          const linkUrl = `${url}/${key}`;
-          const params: AWS.S3.Types.PutObjectRequest = {
-            Bucket: AWS_S3_BUCKET,
-            Key: key,
-            Body: file,
-            ContentType: file.type,
-            ACL: 'public-read',
-          };
-          const data: any = await s3.putObject(params).promise();
-          console.log(data)
-          if (data) {
-            editor.insertEmbed(editor.getSelection(), "image", linkUrl);
-          }
-        } else {
-          console.log('You could only upload images.');
-        }
-      };
+        input.onchange = async () => {
+            const file = (input as any)?.files[0];
+            if (/^image\//.test(file.type)) {
+                console.log(file);
+                const key = crypto.randomBytes(5).toString('hex') + file.name;
+                const url = process.env.NEXT_PUBLIC_S3_endpoint;
+                const linkUrl = `${url}/${key}`;
+                const params: AWS.S3.Types.PutObjectRequest = {
+                    Bucket: AWS_S3_BUCKET,
+                    Key: key,
+                    Body: file,
+                    ContentType: file.type,
+                    ACL: 'public-read',
+                };
+                const data: any = await s3.putObject(params).promise();
+                console.log(data);
+                if (data) {
+                    editor.insertEmbed(editor.getSelection(), 'image', linkUrl);
+                }
+            } else {
+                console.log('You could only upload images.');
+            }
+        };
     }
-  }
+};
 ```
 
-![quill2](../../../assets/images/content/screenshot-2023-12-20-125615.png "quill2")
+![quill2](../../../assets/images/content/screenshot-2023-12-20-125615.png 'quill2')
 
 The question is, how to save to the database then display it again?
 
 We can save it in string form with `JSON.stringify(value)`, the string will looks like this:
 
 ```typescript
-const INITIAL = `<p>Hello</p><p>How are you?</p><p>are you okay?</p><p>Love you</p><p><br></p><p><img src=\"https://pub-821.r2.dev/91a215ee17picture.png\"></p>`
+const INITIAL = `<p>Hello</p><p>How are you?</p><p>are you okay?</p><p>Love you</p><p><br></p><p><img src=\"https://pub-821.r2.dev/91a215ee17picture.png\"></p>`;
 ```
 
 Then, we can load it using useEffect
 
 ```typescript
-  useEffect(() => {
+useEffect(() => {
     setValue(INITIAL);
-  }, [])
+}, []);
 ```

@@ -13,42 +13,54 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://portofolio-lutfi.netlify.app",
+    site: 'https://portofolio-lutfi.netlify.app',
     image: {
-        remotePatterns: [{ protocol: "https" }]
+        remotePatterns: [{ protocol: 'https' }],
     },
-    integrations: [starlight({
-        title: 'HasLab by Lutfi',
-        social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/lutfi-haslab' }],
-        sidebar: [
-            {
-                label: 'Knowledge Base',
-                autogenerate: { directory: 'knowledge-base' },
-            },
-            {
-                label: 'Project',
-                autogenerate: { directory: 'project' },
-            },
-        ],
-        plugins: [
-            starlightBlog({
-                authors: {
-                    lutfi: {
-                        name: 'Lutfi Ikbal Majid',
-                        title: 'Software Engineer',
-                        picture: 'https://avatars.githubusercontent.com/u/108409669?v=4', // Images in the `public` directory are supported.
-                        url: 'https://github.com/lutfi-haslab',
-                    },
+    integrations: [
+        starlight({
+            title: 'HasLab by Lutfi',
+            social: [
+                {
+                    icon: 'github',
+                    label: 'GitHub',
+                    href: 'https://github.com/lutfi-haslab',
                 },
-            })
-        ]
-    }), icon(), react(), sitemap({
-        changefreq: 'daily',
-        priority: 0.7,
-        lastmod: new Date('2025-05-08'),
-    })],
+            ],
+            sidebar: [
+                {
+                    label: 'Knowledge Base',
+                    items: [{ autogenerate: { directory: 'knowledge-base' } }],
+                },
+                {
+                    label: 'Project',
+                    items: [{ autogenerate: { directory: 'project' } }],
+                },
+            ],
+            plugins: [
+                starlightBlog({
+                    authors: {
+                        lutfi: {
+                            name: 'Lutfi Ikbal Majid',
+                            title: 'Software Engineer',
+                            picture:
+                                'https://avatars.githubusercontent.com/u/108409669?v=4', // Images in the `public` directory are supported.
+                            url: 'https://github.com/lutfi-haslab',
+                        },
+                    },
+                }),
+            ],
+        }),
+        icon(),
+        react(),
+        sitemap({
+            changefreq: 'daily',
+            priority: 0.7,
+            lastmod: new Date('2025-05-08'),
+        }),
+    ],
 
     vite: {
-        plugins: [tailwindcss()],
+        plugins: [/** @type {any} */ (tailwindcss())],
     },
 });
