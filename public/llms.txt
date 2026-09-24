@@ -1,0 +1,30 @@
+# Lutfi Ikbal Majid — Engineering Workspace
+
+> Software Engineer, Systems Architect, and Fullstack Specialist building autonomous AI agent architectures, high-performance Go proxies, and native desktop applications.
+
+## Personal Information
+- Name: Lutfi Ikbal Majid
+- Role: Software Developer / Systems Engineer
+- Website: https://lutfiikbalmajid.pages.dev
+- GitHub: https://github.com/Haslab-dev
+- Location: Indonesia
+
+## Core Areas of Expertise
+- Systems Architecture & Performance Engineering
+- Autonomous Multi-Agent AI Orchestration
+- Golang, Wails, Low-latency HTTP/gRPC Proxies
+- React, TypeScript, Next.js, Modern Tailwind CSS
+- Docker, Microservices, Native Desktop Tooling
+
+## Featured Projects
+- [Timenotes](https://lutfiikbalmajid.pages.dev/project/timenotes): Offline-first cross-platform developer notes and time tracker built with React Native and SQLite.
+- [KendaliAI](https://lutfiikbalmajid.pages.dev/project/kendaliai): Enterprise multi-agent orchestration console with real-time telemetry, model routing, and role delegation.
+- [ForgeADE](https://lutfiikbalmajid.pages.dev/project/forgeade): Native developer environment and terminal workspace built with Go and Wails v2.
+- [MyAiRouter](https://lutfiikbalmajid.pages.dev/project/myairouter): Ultra-low footprint AI Gateway and model load balancer in Go with sub-20ms proxy latency.
+
+## Featured Technical Writings
+- [Architecture Notes: Designing an Ultra-Low Footprint AI Gateway in Go](https://lutfiikbalmajid.pages.dev/blog/building-a-lightweight-ai-router)
+- [Autonomous Multi-Agent Orchestration: Designing Scalable Task Delegation Loops](https://lutfiikbalmajid.pages.dev/blog/autonomous-multi-agent-orchestration)
+- [Native Workspace Architecture: Why We Picked Wails Over Electron for ForgeADE](https://lutfiikbalmajid.pages.dev/blog/native-workspace-architecture-wails-vs-electron)
+- [Golang and Web Frameworks Comparison](https://lutfiikbalmajid.pages.dev/blog/2025-06-04-golang-and-web-frameworks)
+- [Vibe Coding: The Programming Revolution Taking 2025 by Storm](https://lutfiikbalmajid.pages.dev/blog/2025-06-23-vibe-coding-the-programming-revolution-taking-2025-by-storm)

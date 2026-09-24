@@ -16,7 +16,9 @@ export default defineConfig({
         mdx(),
         react(),
         icon(),
-        sitemap(),
+        sitemap({
+            filter: (page) => !page.includes('/admin'),
+        }),
     ],
     vite: {
         plugins: [/** @type {any} */ (tailwindcss())],

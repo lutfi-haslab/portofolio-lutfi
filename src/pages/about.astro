@@ -1,9 +1,42 @@
 ---
 import Layout from '../layout/Layout.astro';
 import { FiUser, FiCpu, FiTerminal, FiAward, FiGithub, FiExternalLink } from 'react-icons/fi';
+const siteBaseUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://lutfiikbalmajid.pages.dev';
+
+const profileSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    mainEntity: {
+        '@type': 'Person',
+        name: 'Lutfi Ikbal Majid',
+        jobTitle: 'Senior Software Engineer & Systems Architect',
+        alumniOf: {
+            '@type': 'CollegeOrUniversity',
+            name: 'Telkom University',
+        },
+        knowsAbout: [
+            'Autonomous AI Agents',
+            'Golang Systems Architecture',
+            'Wails Native Desktop Development',
+            'React and TypeScript',
+            'Distributed Systems & Low-Latency AI Routers',
+        ],
+        sameAs: [
+            'https://github.com/Haslab-dev',
+            'https://github.com/lutfi-haslab',
+            'https://linkedin.com/in/lutfiikbalmajid',
+            'https://twitter.com/haslab_dev',
+        ],
+    },
+};
 ---
 
-<Layout title="About Lutfi">
+<Layout 
+    title="About Lutfi Ikbal Majid — Background & Engineering Philosophy"
+    description="Learn more about Lutfi Ikbal Majid, an Engineering Physics graduate from Telkom University specializing in autonomous AI multi-agent orchestration, Go proxies, and native desktop systems."
+    ogType="profile"
+    schema={profileSchema}
+>
     <div class="container mx-auto px-6 py-12 max-w-4xl space-y-16">
         <header class="space-y-4 border-b border-gray-800 pb-8">
             <div class="inline-flex items-center space-x-2 text-xs font-mono text-emerald-400">

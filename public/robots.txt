@@ -1,4 +1,58 @@
+# Robots.txt for Lutfi Ikbal Majid's Engineering Workspace
+# https://lutfiikbalmajid.pages.dev
+
 User-agent: *
 Allow: /
+Disallow: /admin/
 
-Sitemap: https://portofolio-lutfi.netlify.app/sitemap-index.xml
+# Search Engine Crawlers (Google, Yahoo, Bing, DuckDuckGo, Yandex)
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /assets-img/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+
+User-agent: Slurp
+Allow: /
+Disallow: /admin/
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /admin/
+
+# AI Discovery & Search Crawlers (ChatGPT, Perplexity, Claude, Applebot)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Sitemaps
+Sitemap: https://lutfiikbalmajid.pages.dev/sitemap-index.xml
+Sitemap: https://lutfiikbalmajid.pages.dev/rss.xml

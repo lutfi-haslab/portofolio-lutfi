@@ -13,9 +13,67 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+
+const siteBaseUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://lutfiikbalmajid.pages.dev';
+const projectUrl = `${siteBaseUrl}/project/${project.id}`;
+
+const projectImages: Record<string, string> = {
+    kendaliai: '/images/projects/kendaliai-dashboard.png',
+    forgeade: '/images/projects/forgeade.jpg',
+    myairouter: '/images/projects/myairouter.jpg',
+    timenotes: '/images/projects/timenotes.jpg',
+};
+const ogImage = projectImages[project.id] || '/images/projects/kendaliai-dashboard.png';
+const fullImageUrl = `${siteBaseUrl}${ogImage}`;
+
+const softwareSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': `${projectUrl}#software`,
+    name: project.data.title,
+    description: project.data.description,
+    image: fullImageUrl,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Cross-platform',
+    author: {
+        '@type': 'Person',
+        name: 'Lutfi Ikbal Majid',
+        url: `${siteBaseUrl}/about`,
+    },
+};
+
+const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+        {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: siteBaseUrl,
+        },
+        {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Projects',
+            item: `${siteBaseUrl}/project`,
+        },
+        {
+            '@type': 'ListItem',
+            position: 3,
+            name: project.data.title,
+            item: projectUrl,
+        },
+    ],
+};
 ---
 
-<Layout title={project.data.title} description={project.data.description}>
+<Layout 
+    title={project.data.title} 
+    description={project.data.description}
+    ogImage={fullImageUrl}
+    schema={[softwareSchema, breadcrumbSchema]}
+>
     <article class="container mx-auto px-6 py-12 max-w-4xl">
         <a
             href="/project"

@@ -54,9 +54,81 @@ const dateFormatted = post.data.date
 
 const readingTime = getReadingTime(post.body || '');
 const heroImage = getPostImage(post);
+
+const siteBaseUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://lutfiikbalmajid.pages.dev';
+const postUrl = `${siteBaseUrl}/blog/${post.id}`;
+const fullImageUrl = heroImage
+    ? (heroImage.startsWith('http') ? heroImage : `${siteBaseUrl}${heroImage}`)
+    : `${siteBaseUrl}/images/projects/kendaliai-dashboard.png`;
+
+const isoDate = post.data.date ? new Date(post.data.date).toISOString() : new Date().toISOString();
+
+const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': `${postUrl}#article`,
+    headline: post.data.title,
+    description: post.data.description,
+    image: [fullImageUrl],
+    datePublished: isoDate,
+    dateModified: isoDate,
+    author: {
+        '@type': 'Person',
+        name: 'Lutfi Ikbal Majid',
+        url: `${siteBaseUrl}/about`,
+        sameAs: ['https://github.com/Haslab-dev', 'https://linkedin.com/in/lutfiikbalmajid'],
+    },
+    publisher: {
+        '@type': 'Person',
+        name: 'Lutfi Ikbal Majid',
+        url: siteBaseUrl,
+        logo: {
+            '@type': 'ImageObject',
+            url: `${siteBaseUrl}/favicon.svg`,
+        },
+    },
+    mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': postUrl,
+    },
+    keywords: (post.data.tags || []).join(', '),
+};
+
+const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+        {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: siteBaseUrl,
+        },
+        {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Writings',
+            item: `${siteBaseUrl}/blog`,
+        },
+        {
+            '@type': 'ListItem',
+            position: 3,
+            name: post.data.title,
+            item: postUrl,
+        },
+    ],
+};
 ---
 
-<Layout title={post.data.title} description={post.data.description} ogImage={heroImage || undefined}>
+<Layout 
+    title={post.data.title} 
+    description={post.data.description} 
+    ogImage={fullImageUrl}
+    ogType="article"
+    publishedTime={isoDate}
+    tags={post.data.tags || []}
+    schema={[articleSchema, breadcrumbSchema]}
+>
     <article class="container mx-auto px-6 py-12 max-w-3xl font-sans">
         
         {/* Back Link */}
