@@ -1,0 +1,265 @@
+---
+import Layout from '../../layout/Layout.astro';
+import { aiLabsShowcases, type LabShowcase } from '../../data/ai-labs';
+import { NeuralSynapseCanvas } from '../../components/labs/NeuralSynapseCanvas';
+import { EmbeddingSpaceCanvas } from '../../components/labs/EmbeddingSpaceCanvas';
+import { AgentOrbitSimulator } from '../../components/labs/AgentOrbitSimulator';
+import { TokenStreamSimulator } from '../../components/labs/TokenStreamSimulator';
+import { 
+    FiArrowLeft, 
+    FiArrowRight, 
+    FiLayers, 
+    FiCpu, 
+    FiSliders, 
+    FiCode, 
+    FiCheckSquare,
+    FiShare2,
+    FiExternalLink
+} from 'react-icons/fi';
+
+export async function getStaticPaths() {
+    return aiLabsShowcases.map((showcase, index) => {
+        const nextLab = index < aiLabsShowcases.length - 1 ? aiLabsShowcases[index + 1] : null;
+        const prevLab = index > 0 ? aiLabsShowcases[index - 1] : null;
+
+        return {
+            params: { slug: showcase.slug },
+            props: { showcase, nextLab, prevLab },
+        };
+    });
+}
+
+interface Props {
+    showcase: LabShowcase;
+    nextLab: LabShowcase | null;
+    prevLab: LabShowcase | null;
+}
+
+const { showcase, nextLab, prevLab } = Astro.props;
+
+const siteBaseUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://lutfiikbalmajid.pages.dev';
+const labUrl = `${siteBaseUrl}/labs/${showcase.slug}`;
+
+const labSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': `${labUrl}#lab`,
+    headline: showcase.title,
+    description: showcase.description,
+    image: [`${siteBaseUrl}/images/projects/kendaliai-dashboard.png`],
+    author: {
+        '@type': 'Person',
+        name: 'Lutfi Ikbal Majid',
+        url: `${siteBaseUrl}/about`,
+    },
+    publisher: {
+        '@type': 'Person',
+        name: 'Lutfi Ikbal Majid',
+        url: siteBaseUrl,
+    },
+    keywords: showcase.tags.join(', '),
+};
+
+const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteBaseUrl },
+        { '@type': 'ListItem', position: 2, name: 'AI Labs', item: `${siteBaseUrl}/labs` },
+        { '@type': 'ListItem', position: 3, name: showcase.title, item: labUrl },
+    ],
+};
+---
+
+<Layout
+    title={`${showcase.title} — AI Labs`}
+    description={showcase.description}
+    schema={[labSchema, breadcrumbSchema]}
+>
+    <div class="container mx-auto px-6 py-12 max-w-5xl space-y-12 font-sans">
+        
+        {/* Back Link */}
+        <div>
+            <a
+                href="/labs"
+                class="inline-flex items-center space-x-2 text-xs font-mono text-gray-400 hover:text-emerald-400 transition-colors"
+            >
+                <FiArrowLeft className="w-3.5 h-3.5" />
+                <span>All AI Labs</span>
+            </a>
+        </div>
+
+        {/* Experiment Header */}
+        <header class="space-y-4 pb-6 border-b border-gray-800">
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-950/80 text-emerald-400 border border-emerald-800">
+                    {showcase.badge}
+                </span>
+                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono text-gray-300 bg-gray-900 border border-gray-800">
+                    {showcase.categoryLabel}
+                </span>
+                <span class="text-xs font-mono text-gray-500">·</span>
+                <span class="text-xs font-mono text-gray-400">{showcase.readingTime}</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                {showcase.title}
+            </h1>
+
+            <p class="text-base sm:text-lg text-gray-300 leading-relaxed font-normal">
+                {showcase.subtitle}
+            </p>
+        </header>
+
+        {/* INTERACTIVE WORKSPACE CANVAS (Islands) */}
+        <section class="space-y-4">
+            <div class="flex items-center justify-between text-xs font-mono text-gray-400">
+                <span class="flex items-center space-x-2 text-emerald-400 font-bold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>Live Hardware-Accelerated Viewport</span>
+                </span>
+                <span class="hidden sm:inline text-gray-500">Drag to rotate · Interact with controls</span>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden shadow-2xl border border-gray-800">
+                {showcase.id === 'neural-synapse-3d' && (
+                    <NeuralSynapseCanvas client:only="react" interactiveControls={true} />
+                )}
+                {showcase.id === 'embedding-vector-space' && (
+                    <EmbeddingSpaceCanvas client:only="react" />
+                )}
+                {showcase.id === 'agent-orchestrator' && (
+                    <AgentOrbitSimulator client:only="react" />
+                )}
+                {showcase.id === 'token-stream-simulator' && (
+                    <TokenStreamSimulator client:only="react" />
+                )}
+            </div>
+        </section>
+
+        {/* CONTROLS GUIDE & SPECIFICATIONS */}
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pt-4">
+            
+            {/* Left Column: Architectural & Math Notes (7 cols) */}
+            <div class="md:col-span-7 space-y-6">
+                
+                <section class="p-6 rounded-2xl bg-gray-900/40 border border-gray-800 space-y-4">
+                    <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+                        <FiCpu className="text-emerald-400" />
+                        <span>System Architecture & Engineering Concept</span>
+                    </h2>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        {showcase.description}
+                    </p>
+
+                    {showcase.mathOrAlgorithm && (
+                        <div class="p-4 rounded-xl bg-gray-950 border border-gray-800 space-y-2">
+                            <div class="text-[11px] font-mono font-bold uppercase text-emerald-400">
+                                Mathematical Formulation / Heuristic:
+                            </div>
+                            <div class="text-xs font-mono text-gray-200 leading-relaxed">
+                                {showcase.mathOrAlgorithm}
+                            </div>
+                        </div>
+                    )}
+                </section>
+
+                {/* Key Architecture Bullets */}
+                <section class="space-y-3">
+                    <h3 class="text-sm font-mono font-bold uppercase tracking-wider text-gray-400">
+                        Implementation Highlights
+                    </h3>
+                    <ul class="space-y-2.5">
+                        {showcase.architectureNotes.map((note) => (
+                            <li class="flex items-start space-x-3 text-sm text-gray-300">
+                                <span class="text-emerald-400 mt-1">
+                                    <FiCheckSquare className="w-4 h-4" />
+                                </span>
+                                <span>{note}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+
+            </div>
+
+            {/* Right Column: Parameter Controls Guide & Code Tab (5 cols) */}
+            <div class="md:col-span-5 space-y-6">
+                
+                {/* Control Panel Guide */}
+                <section class="p-6 rounded-2xl bg-gray-900/40 border border-gray-800 space-y-4">
+                    <h3 class="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center space-x-2">
+                        <FiSliders className="text-cyan-400" />
+                        <span>Interactive Parameters</span>
+                    </h3>
+                    <div class="space-y-3">
+                        {showcase.controlsGuide.map((ctrl) => (
+                            <div class="p-3 rounded-xl bg-gray-950/80 border border-gray-800 space-y-1">
+                                <div class="text-xs font-mono font-bold text-white">
+                                    {ctrl.name}
+                                </div>
+                                <div class="text-xs text-gray-400 leading-relaxed font-sans">
+                                    {ctrl.description}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Code Snippet Box */}
+                <section class="p-5 rounded-2xl bg-gray-950 border border-gray-800 space-y-3 font-mono">
+                    <div class="flex items-center justify-between text-xs text-gray-400 border-b border-gray-800 pb-2">
+                        <span class="flex items-center space-x-1.5 text-emerald-400">
+                            <FiCode />
+                            <span>Core Engine Loop</span>
+                        </span>
+                        <span class="text-[10px] text-gray-500">TypeScript</span>
+                    </div>
+                    <pre class="text-xs text-gray-300 overflow-x-auto p-2 leading-relaxed bg-gray-900/60 rounded-xl">
+<code>{showcase.codeSnippet}</code>
+                    </pre>
+                </section>
+
+            </div>
+
+        </div>
+
+        {/* PREV & NEXT LAB NAVIGATION */}
+        <div class="pt-8 border-t border-gray-800">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {prevLab ? (
+                    <a
+                        href={`/labs/${prevLab.slug}`}
+                        class="group p-5 rounded-2xl border border-gray-800 bg-gray-900/30 hover:bg-gray-900/80 hover:border-gray-700 transition-all flex flex-col justify-between space-y-2"
+                    >
+                        <div class="flex items-center space-x-2 text-xs font-mono text-gray-500 group-hover:text-emerald-400 transition-colors">
+                            <FiArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+                            <span>Previous Experiment</span>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-200 group-hover:text-white transition-colors line-clamp-2 leading-snug">
+                            {prevLab.title}
+                        </h4>
+                    </a>
+                ) : (
+                    <div class="hidden sm:block"></div>
+                )}
+
+                {nextLab && (
+                    <a
+                        href={`/labs/${nextLab.slug}`}
+                        class="group p-5 rounded-2xl border border-gray-800 bg-gray-900/30 hover:bg-gray-900/80 hover:border-gray-700 transition-all flex flex-col justify-between space-y-2 sm:text-right"
+                    >
+                        <div class="flex items-center sm:justify-end space-x-2 text-xs font-mono text-gray-500 group-hover:text-emerald-400 transition-colors">
+                            <span>Next Experiment</span>
+                            <FiArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-200 group-hover:text-white transition-colors line-clamp-2 leading-snug">
+                            {nextLab.title}
+                        </h4>
+                    </a>
+                )}
+            </div>
+        </div>
+
+    </div>
+</Layout>

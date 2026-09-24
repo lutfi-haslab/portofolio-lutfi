@@ -7,6 +7,7 @@ import {
     FiExternalLink, 
     FiGithub
 } from 'react-icons/fi';
+import { NeuralSynapseCanvas } from '../components/labs/NeuralSynapseCanvas';
 
 // Fetch all writing articles (including technical guides)
 const allWritings = await getCollection('blog');
@@ -153,6 +154,62 @@ const sortedWritings = allWritings
                         </div>
                     </div>
                 ))}
+            </div>
+        </section>
+
+        {/* AI LABS SPOTLIGHT SECTION */}
+        <section id="ai-labs" class="space-y-8 scroll-mt-20">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-gray-800 pb-4 gap-4">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider mb-1">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Interactive 3D & AI Showcases</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                        AI Labs
+                    </h2>
+                    <p class="text-sm text-gray-400 mt-1">
+                        Hardware-accelerated Three.js WebGL simulations, neural synapse firing, and agent telemetry run live in React.
+                    </p>
+                </div>
+                <a
+                    href="/labs"
+                    class="text-xs font-mono text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 font-semibold"
+                >
+                    <span>Explore all 4 AI Labs</span>
+                    <FiArrowRight />
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-3xl border border-gray-800 bg-gray-950/80 p-6 sm:p-8">
+                <div class="lg:col-span-7 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
+                    <NeuralSynapseCanvas client:only="react" compact={true} interactiveControls={true} />
+                </div>
+                <div class="lg:col-span-5 space-y-5">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-800 text-emerald-400 font-mono text-xs font-bold">
+                        <span>WebGL Three.js 3D</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white tracking-tight">
+                        3D Neural Synapse Cloud
+                    </h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Interactive volumetric particle simulation computing Euclidean distance synaptic thresholds, action potential waves, and real-time rotational physics at 60 FPS.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-gray-900 border border-gray-800 text-gray-300">Three.js</span>
+                        <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-gray-900 border border-gray-800 text-gray-300">Particles</span>
+                        <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-gray-900 border border-gray-800 text-gray-300">React 19</span>
+                    </div>
+                    <div class="pt-2">
+                        <a
+                            href="/labs/neural-synapse-3d"
+                            class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-gray-950 font-bold text-xs font-mono transition-all shadow-lg shadow-emerald-500/20"
+                        >
+                            <span>Open Fullscreen Workspace</span>
+                            <FiArrowRight className="w-3.5 h-3.5" />
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 

@@ -12,7 +12,7 @@ interface Item {
     id: string;
     title: string;
     description: string;
-    category: 'Work' | 'Writing';
+    category: 'Work' | 'Writing' | 'AI Labs';
     url: string;
     badge?: string;
 }
@@ -121,6 +121,39 @@ const ITEMS: Item[] = [
         description: 'Learn to code faster with essential engineering strategies',
         category: 'Writing',
         url: '/blog/unlocking-fastlane-programming-journey',
+    },
+    // AI Labs (Interactive Showcases)
+    {
+        id: 'lab-1',
+        title: '3D Neural Synapse Cloud (Three.js WebGL)',
+        description: 'Interactive 3D volumetric neural axons & real-time action potential pulses',
+        category: 'AI Labs',
+        url: '/labs/neural-synapse-3d',
+        badge: 'Three.js 3D',
+    },
+    {
+        id: 'lab-2',
+        title: '3D Vector Embedding Space & Cosine Similarity',
+        description: 'Semantic vector cluster manifold with live cosine similarity beam projections',
+        category: 'AI Labs',
+        url: '/labs/embedding-vector-space',
+        badge: 'Semantic 3D',
+    },
+    {
+        id: 'lab-3',
+        title: 'Autonomous Multi-Agent Telemetry Simulator',
+        description: 'Live supervisor ⇄ worker DAG dispatching and error recovery console',
+        category: 'AI Labs',
+        url: '/labs/agent-orchestrator',
+        badge: 'Simulation',
+    },
+    {
+        id: 'lab-4',
+        title: 'LLM Token Generation & Entropy Heatmap',
+        description: 'Live autoregressive softmax sampling with temperature and Top-P controls',
+        category: 'AI Labs',
+        url: '/labs/token-stream-simulator',
+        badge: 'Decoder',
     },
 ];
 

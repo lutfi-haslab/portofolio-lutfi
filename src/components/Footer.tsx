@@ -14,6 +14,7 @@ export const Footer: React.FC = () => {
 
                 <div className="flex items-center space-x-6 font-mono text-gray-400">
                     <a href="/project" className="hover:text-white transition-colors">Projects</a>
+                    <a href="/labs" className="hover:text-emerald-400 transition-colors">AI Labs</a>
                     <a href="/blog" className="hover:text-white transition-colors">Writings</a>
                     <a href="/about" className="hover:text-white transition-colors">About</a>
                     <a

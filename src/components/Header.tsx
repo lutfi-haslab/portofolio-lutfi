@@ -28,12 +28,21 @@ const Header: React.FC = () => {
                 </a>
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <nav className="hidden md:flex items-center space-x-7 text-sm font-medium">
                     <a
                         href="/project"
                         className="text-gray-300 hover:text-white transition-colors"
                     >
                         Projects
+                    </a>
+                    <a
+                        href="/labs"
+                        className="text-gray-300 hover:text-emerald-400 transition-colors flex items-center space-x-1.5"
+                    >
+                        <span>AI Labs</span>
+                        <span className="px-1.5 py-0.2 rounded text-[10px] font-mono bg-emerald-950/80 text-emerald-400 border border-emerald-800/80">
+                            3D
+                        </span>
                     </a>
                     <a
                         href="/blog"
@@ -102,6 +111,16 @@ const Header: React.FC = () => {
                         onClick={() => setMobileOpen(false)}
                     >
                         → Projects
+                    </a>
+                    <a
+                        href="/labs"
+                        className="block text-emerald-400 hover:text-emerald-300 py-1 flex items-center justify-between"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        <span>→ AI Labs</span>
+                        <span className="px-1.5 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800">
+                            3D
+                        </span>
                     </a>
                     <a
                         href="/blog"

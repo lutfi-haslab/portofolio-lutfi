@@ -1,0 +1,202 @@
+---
+import Layout from '../../layout/Layout.astro';
+import { aiLabsShowcases } from '../../data/ai-labs';
+import { NeuralSynapseCanvas } from '../../components/labs/NeuralSynapseCanvas';
+import { EmbeddingSpaceCanvas } from '../../components/labs/EmbeddingSpaceCanvas';
+import { AgentOrbitSimulator } from '../../components/labs/AgentOrbitSimulator';
+import { TokenStreamSimulator } from '../../components/labs/TokenStreamSimulator';
+import { FiArrowRight, FiCpu, FiBox, FiLayers, FiTerminal, FiActivity } from 'react-icons/fi';
+
+const categories = [
+    { key: 'all', label: 'All Experiments', count: aiLabsShowcases.length },
+    { key: 'threejs', label: 'Three.js 3D', count: aiLabsShowcases.filter(s => s.category === 'threejs').length },
+    { key: 'multi-agent', label: 'Multi-Agent', count: aiLabsShowcases.filter(s => s.category === 'multi-agent').length },
+    { key: 'embeddings', label: 'Vector Embeddings', count: aiLabsShowcases.filter(s => s.category === 'embeddings').length },
+    { key: 'token-stream', label: 'Token Stream', count: aiLabsShowcases.filter(s => s.category === 'token-stream').length },
+];
+---
+
+<Layout
+    title="AI Labs — Interactive Engineering Showcases"
+    description="Interactive AI engineering laboratory featuring Three.js 3D neural synapse visualizers, multi-agent DAG telemetry, vector embedding manifolds, and live token decoders."
+    keywords="AI Labs, Three.js AI Showcase, React Three.js, WebGL Neural Network, Multi-Agent Simulator, Vector Embedding 3D, Lutfi Ikbal Majid"
+>
+    <div class="container mx-auto px-6 py-12 max-w-6xl space-y-12 font-sans">
+        
+        {/* HERO SECTION */}
+        <header class="space-y-4 border-b border-gray-800 pb-10">
+            <div class="flex items-center space-x-3">
+                <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-800/80 text-emerald-400 font-mono text-xs font-bold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Interactive AI R&D Workspace</span>
+                </span>
+                <span class="text-xs font-mono text-gray-500">React + Three.js + WebGL</span>
+            </div>
+
+            <div class="space-y-3">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                    AI Labs
+                </h1>
+                <p class="text-gray-400 text-base sm:text-lg max-w-3xl leading-relaxed">
+                    A collection of real-time interactive engineering showcases exploring autonomous agent orchestration, 3D WebGL neural clouds, high-dimensional vector embeddings, and LLM inference mechanics.
+                </p>
+            </div>
+
+            {/* Metrics Row */}
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+                <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800">
+                    <div class="text-xl sm:text-2xl font-bold font-mono text-emerald-400">4</div>
+                    <div class="text-xs text-gray-400 font-mono">Live Showcases</div>
+                </div>
+                <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800">
+                    <div class="text-xl sm:text-2xl font-bold font-mono text-cyan-400">60 FPS</div>
+                    <div class="text-xs text-gray-400 font-mono">WebGL Rendering</div>
+                </div>
+                <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800">
+                    <div class="text-xl sm:text-2xl font-bold font-mono text-purple-400">React 19</div>
+                    <div class="text-xs text-gray-400 font-mono">Islands Architecture</div>
+                </div>
+                <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800">
+                    <div class="text-xl sm:text-2xl font-bold font-mono text-amber-400">Three.js</div>
+                    <div class="text-xs text-gray-400 font-mono">Hardware Accelerated</div>
+                </div>
+            </div>
+        </header>
+
+        {/* CATEGORY FILTER TABS */}
+        <div class="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
+            {categories.map((cat, i) => (
+                <button
+                    data-cat={cat.key}
+                    class={`lab-filter-btn px-4 py-2 rounded-xl text-xs font-mono font-medium transition-all cursor-pointer whitespace-nowrap ${
+                        i === 0
+                            ? 'bg-emerald-500 text-gray-950 font-bold shadow-lg shadow-emerald-500/20'
+                            : 'bg-gray-900 text-gray-400 hover:text-white border border-gray-800'
+                    }`}
+                >
+                    <span>{cat.label}</span>
+                    <span class="ml-1.5 opacity-70">({cat.count})</span>
+                </button>
+            ))}
+        </div>
+
+        {/* SHOWCASE CARDS GRID */}
+        <div id="labs-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {aiLabsShowcases.map((showcase) => (
+                <article
+                    class="lab-card group rounded-2xl border border-gray-800 bg-gray-950/70 hover:border-gray-700 overflow-hidden flex flex-col justify-between transition-all hover:shadow-2xl"
+                    data-category={showcase.category}
+                >
+                    {/* Top Canvas / Simulation Preview */}
+                    <div class="relative bg-gray-950 border-b border-gray-800/80 overflow-hidden">
+                        {showcase.id === 'neural-synapse-3d' && (
+                            <NeuralSynapseCanvas client:only="react" compact={true} interactiveControls={false} />
+                        )}
+                        {showcase.id === 'embedding-vector-space' && (
+                            <EmbeddingSpaceCanvas client:only="react" compact={true} />
+                        )}
+                        {showcase.id === 'agent-orchestrator' && (
+                            <div class="h-72 p-6 flex flex-col justify-center items-center text-center space-y-4 bg-gradient-to-b from-gray-900/60 to-gray-950">
+                                <div class="w-14 h-14 rounded-2xl bg-emerald-950 border border-emerald-800/80 flex items-center justify-center text-emerald-400 shadow-xl shadow-emerald-500/10">
+                                    <FiActivity className="w-7 h-7 animate-pulse" />
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-sm font-bold text-white font-mono">Autonomous Multi-Agent DAG</div>
+                                    <div class="text-xs text-gray-400 font-mono">Supervisor ⇄ Worker Telemetry Engine</div>
+                                </div>
+                            </div>
+                        )}
+                        {showcase.id === 'token-stream-simulator' && (
+                            <div class="h-72 p-6 flex flex-col justify-center items-center text-center space-y-4 bg-gradient-to-b from-gray-900/60 to-gray-950">
+                                <div class="w-14 h-14 rounded-2xl bg-cyan-950 border border-cyan-800/80 flex items-center justify-center text-cyan-400 shadow-xl shadow-cyan-500/10">
+                                    <FiCpu className="w-7 h-7" />
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-sm font-bold text-white font-mono">Logprob & Entropy Decoder</div>
+                                    <div class="text-xs text-gray-400 font-mono">Autoregressive Softmax Sampling</div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Top Badges */}
+                        <div class="absolute top-4 left-4 z-10 flex items-center space-x-2">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-gray-950/90 text-emerald-400 border border-emerald-900/60 backdrop-blur-md">
+                                {showcase.badge}
+                            </span>
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono text-gray-300 bg-gray-950/90 border border-gray-800 backdrop-blur-md">
+                                {showcase.categoryLabel}
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div class="p-6 sm:p-7 space-y-4 flex-grow flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                                {showcase.title}
+                            </h2>
+                            <p class="text-sm text-gray-400 leading-relaxed font-normal">
+                                {showcase.subtitle}
+                            </p>
+                        </div>
+
+                        {/* Tags & Action Button */}
+                        <div class="pt-4 border-t border-gray-900 flex items-center justify-between">
+                            <div class="flex flex-wrap gap-1.5">
+                                {showcase.tags.slice(0, 3).map((tag) => (
+                                    <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-gray-900 text-gray-400 border border-gray-800">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <a
+                                href={`/labs/${showcase.slug}`}
+                                class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-gray-900 hover:bg-emerald-500 hover:text-gray-950 text-white font-mono text-xs transition-all border border-gray-800 group-hover:border-emerald-500/60 shrink-0"
+                            >
+                                <span>Launch Lab</span>
+                                <FiArrowRight className="w-3.5 h-3.5" />
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            ))}
+        </div>
+
+    </div>
+
+    <script is:inline>
+        function setupLabFilter() {
+            const buttons = document.querySelectorAll('.lab-filter-btn');
+            const cards = document.querySelectorAll('.lab-card');
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cat = btn.getAttribute('data-cat');
+
+                    buttons.forEach(b => {
+                        b.classList.remove('bg-emerald-500', 'text-gray-950', 'font-bold', 'shadow-lg');
+                        b.classList.add('bg-gray-900', 'text-gray-400', 'border', 'border-gray-800');
+                    });
+                    btn.classList.add('bg-emerald-500', 'text-gray-950', 'font-bold', 'shadow-lg');
+                    btn.classList.remove('bg-gray-900', 'text-gray-400', 'border', 'border-gray-800');
+
+                    cards.forEach(card => {
+                        const cardCat = card.getAttribute('data-category');
+                        if (cat === 'all' || cardCat === cat) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupLabFilter);
+        } else {
+            setupLabFilter();
+        }
+    </script>
+</Layout>
