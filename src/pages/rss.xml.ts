@@ -1,24 +1,17 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import sanitizeHtml from 'sanitize-html';
-import MarkdownIt from 'markdown-it';
-const parser = new MarkdownIt();
 
 export async function GET(context: any) {
-    const blog = (await getCollection('docs')).filter((post) =>
-        post.id.startsWith('blog/')
-    );
+    const blog = (await getCollection('blog')).filter((post) => post.id !== 'index');
     return rss({
-        title: 'Buzz’s Blog',
-        description: 'A humble Astronaut’s guide to the stars',
-        site: context.site,
+        title: "Lutfi Ikbal Majid — Engineering Workspace",
+        description: 'Engineering notes, systems architectures, and technical deep dives by Lutfi Ikbal Majid.',
+        site: context.site || 'https://lutfiikbalmajid.pages.dev',
         items: blog.map((post) => ({
-            link: post.id,
-            // Note: this will not process components or JSX expressions in MDX files.
-            content: sanitizeHtml(parser.render(post.body || ''), {
-                allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
-            }),
-            ...post.data,
+            title: post.data.title,
+            description: post.data.description || '',
+            pubDate: post.data.date || new Date(),
+            link: `/blog/${post.id}`,
         })),
     });
 }

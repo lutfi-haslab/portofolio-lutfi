@@ -57,7 +57,13 @@ const ProjectSection = () => {
                             ))}
                         </div>
                         <a
-                            href="#"
+                            href={myProjects[0].url || '#'}
+                            target={myProjects[0].url ? '_blank' : undefined}
+                            rel={
+                                myProjects[0].url
+                                    ? 'noopener noreferrer'
+                                    : undefined
+                            }
                             className="inline-flex items-center px-4 py-2 border border-emerald-400 text-emerald-400 rounded-lg hover:bg-emerald-400/10 transition-colors"
                         >
                             View Project <FiExternalLink className="ml-2" />
@@ -105,7 +111,13 @@ const ProjectSection = () => {
                                     ))}
                                 </div>
                                 <a
-                                    href="#"
+                                    href={project.url || '#'}
+                                    target={project.url ? '_blank' : undefined}
+                                    rel={
+                                        project.url
+                                            ? 'noopener noreferrer'
+                                            : undefined
+                                    }
                                     className="inline-flex items-center text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
                                 >
                                     Learn more{' '}

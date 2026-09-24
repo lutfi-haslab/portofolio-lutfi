@@ -1,0 +1,93 @@
+---
+import Layout from '../../layout/Layout.astro';
+import { myProjects } from '../../data/my-projects';
+import { FiExternalLink, FiCpu, FiArrowRight } from 'react-icons/fi';
+
+const detailedProjectsMap: Record<string, string> = {
+    'KendaliAI - Autonomous Agent Orchestration Platform': '/project/kendaliai',
+    'ForgeADE - Native AI Development Workspace': '/project/forgeade',
+    'Timenotes - Intelligent Time Tracking & Productivity': '/project/timenotes',
+    'MyAiRouter - High-Performance AI Gateway & Proxy': '/project/myairouter',
+};
+---
+
+<Layout title="Projects — Lutfi Ikbal Majid">
+    <div class="container mx-auto px-6 py-12 max-w-6xl space-y-12 font-sans">
+        <header class="space-y-4 border-b border-gray-800 pb-8">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Projects
+            </h1>
+            <p class="text-gray-400 text-sm sm:text-base max-w-2xl leading-relaxed">
+                A catalog of autonomous AI agents, native developer environments, high-performance API proxies, and web platforms built by Lutfi.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {myProjects.map((project) => {
+                const specUrl = detailedProjectsMap[project.work_title];
+
+                return (
+                    <div class="group rounded-2xl border border-gray-800 bg-gray-950/80 hover:border-gray-700 overflow-hidden flex flex-col transition-all hover:shadow-2xl">
+                        <div class="relative h-60 overflow-hidden bg-gray-900 border-b border-gray-800">
+                            <img
+                                src={project.img_url}
+                                alt={project.work_title}
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-gray-950/90 text-emerald-400 border border-emerald-900/60 backdrop-blur-md">
+                                    {project.type}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div>
+                                <h2 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
+                                    {project.work_title}
+                                </h2>
+                                <p class="text-xs text-gray-400 mt-2 line-clamp-3 leading-relaxed">
+                                    {project.detail}
+                                </p>
+                            </div>
+
+                            <div>
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    {project.tags.map((tag) => (
+                                        <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-gray-900 text-gray-300 border border-gray-800">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <div class="flex items-center justify-between pt-3 border-t border-gray-900 text-xs font-mono">
+                                    {project.url && (
+                                        <a
+                                            href={project.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-flex items-center space-x-1.5 text-gray-400 hover:text-white transition-colors"
+                                        >
+                                            <span>GitHub Repo</span>
+                                            <FiExternalLink className="w-3.5 h-3.5" />
+                                        </a>
+                                    )}
+
+                                    {specUrl ? (
+                                        <a
+                                            href={specUrl}
+                                            class="inline-flex items-center space-x-1 text-emerald-400 hover:text-emerald-300 transition-colors ml-auto font-semibold"
+                                        >
+                                            <span>Read Spec & Docs</span>
+                                            <FiArrowRight className="w-3.5 h-3.5" />
+                                        </a>
+                                    ) : null}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    </div>
+</Layout>

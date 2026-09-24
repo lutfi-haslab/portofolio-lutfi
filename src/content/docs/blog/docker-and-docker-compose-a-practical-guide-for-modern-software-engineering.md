@@ -6,6 +6,9 @@ description: This document outlines Docker’s core functionality, real-world us
 date: 2025-05-09T08:54:00.000Z
 authors:
     - lutfi
+tags:
+    - Architecture
+    - DevOps
 ---
 
 ## Overview
@@ -93,12 +96,12 @@ volumes:
 
 Commands:
 
-| Command              | Description                            |
+| Command | Description |
 | -------------------- | -------------------------------------- | --- |
-| docker-compose up    | Builds and starts the services         |     |
-| docker-compose down  | Stops and removes containers, networks |
-| docker-compose build | Rebuilds the images                    |
-| docker-compose logs  | Shows logs for all services            |
+| docker-compose up | Builds and starts the services | |
+| docker-compose down | Stops and removes containers, networks |
+| docker-compose build | Rebuilds the images |
+| docker-compose logs | Shows logs for all services |
 
 5. Best Practices
 

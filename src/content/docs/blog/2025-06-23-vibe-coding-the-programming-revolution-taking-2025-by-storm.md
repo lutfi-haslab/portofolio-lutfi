@@ -8,6 +8,9 @@ description: 'The software development landscape is experiencing a seismic shift
 date: 2025-06-23T15:02:00.000Z
 authors:
     - lutfi
+tags:
+    - AI
+    - Coding
 cover:
     image: ../../../assets/images/Vibe_Coding_Tools.png
     alt: 'Vibe Coding src: Dezdok'

@@ -1,30 +1,33 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { CommandPalette } from '../components/CommandPalette';
 
 interface Props {
     title?: string;
     description?: string;
+    ogImage?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImage } = Astro.props;
 
 const siteTitle = title
-    ? `${title} | Lutfi Ikbal Majid`
-    : 'Lutfi Ikbal Majid | Software Developer & Tech Enthusiast';
+    ? `${title} | Lutfi's Workspace`
+    : "Lutfi Ikbal Majid — Engineering Workspace";
 const siteDescription =
     description ||
-    'Portfolio of Lutfi Ikbal Majid, an experienced Software Developer specializing in Web Applications, IoT, and Blockchain. Engineering graduate from Telkom University (Teknik Fisika) working as a Software Developer at Peruri.';
-const siteKeywords =
-    'lutfi, ikbal, majid, lutfiikbalmajid, peruri, telkom university, teknik fisika, software developer, iot, blockchain, web developer, frontend engineer, fullstack developer, portfolio, haslab';
+    'Interactive engineering workspace of Lutfi Ikbal Majid. Autonomous AI agents, native developer tools, high-performance routers, and software architecture notes.';
 
 const canonicalURL = new URL(
     Astro.url.pathname,
     Astro.site || 'https://lutfiikbalmajid.pages.dev'
 );
-const ogImageUrl = new URL('/og-image.png', canonicalURL).toString();
+const ogImageUrl = ogImage || new URL('/images/projects/kendaliai-dashboard.png', canonicalURL).toString();
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,10 +36,8 @@ const ogImageUrl = new URL('/og-image.png', canonicalURL).toString();
         <title>{siteTitle}</title>
         <meta name="title" content={siteTitle} />
         <meta name="description" content={siteDescription} />
-        <meta name="keywords" content={siteKeywords} />
         <meta name="author" content="Lutfi Ikbal Majid" />
         <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
@@ -44,7 +45,6 @@ const ogImageUrl = new URL('/og-image.png', canonicalURL).toString();
         <meta property="og:title" content={siteTitle} />
         <meta property="og:description" content={siteDescription} />
         <meta property="og:image" content={ogImageUrl} />
-        <meta property="og:site_name" content="Lutfi Ikbal Majid Portfolio" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
@@ -54,13 +54,23 @@ const ogImageUrl = new URL('/og-image.png', canonicalURL).toString();
         <meta property="twitter:image" content={ogImageUrl} />
 
         <link rel="canonical" href={canonicalURL} />
-        <link rel="sitemap" href="/sitemap-index.xml" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     </head>
 
-    <body>
-        <div id="home" class="bg-gray-900 text-gray-100 min-h-screen">
-            <slot />
+    <body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col font-sans selection:bg-emerald-500/30 selection:text-emerald-300">
+        <!-- Subtle Grid & Radial Background -->
+        <div class="fixed inset-0 pointer-events-none -z-10">
+            <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-emerald-500/10 via-cyan-500/5 to-transparent blur-3xl opacity-60"></div>
         </div>
+
+        <Header client:load />
+        <CommandPalette client:load />
+
+        <main class="flex-grow">
+            <slot />
+        </main>
+
+        <Footer client:visible />
     </body>
 </html>

@@ -8,6 +8,57 @@ type Project = {
 };
 export const myProjects: Project[] = [
     {
+        work_title: 'KendaliAI - Autonomous Agent Orchestration Platform',
+        type: 'AI & Systems Engineering',
+        img_url: '/images/projects/kendaliai-dashboard.png',
+        tags: [
+            'AI Agents',
+            'Automation',
+            'TypeScript',
+            'Vector RAG',
+            'Multi-Agent',
+        ],
+        detail: 'AI Agent Control Center and autonomous workflow orchestration platform featuring server resource telemetry, multi-agent chat, task delegation, and vector RAG ingestion.',
+        url: 'https://github.com/Haslab-dev/KendaliAI',
+    },
+    {
+        work_title: 'ForgeADE - Native AI Development Workspace',
+        type: 'Desktop & AI Engineering',
+        img_url: '/images/projects/forgeade.jpg',
+        tags: ['Go', 'Wails', 'React', 'CodeMirror 6', 'AI-First', 'Desktop'],
+        detail: 'A native, lightweight, AI-first development workspace built with Wails (Go + WebView), React, and CodeMirror 6. Treats AI agents, terminals, Git, and workspaces as first-class citizens without Electron overhead.',
+        url: 'https://github.com/Haslab-dev/forge-ade',
+    },
+    {
+        work_title: 'Timenotes - Intelligent Time Tracking & Productivity',
+        type: 'Web & Mobile Application',
+        img_url: '/images/projects/timenotes.jpg',
+        tags: [
+            'React',
+            'NextJS',
+            'TypeScript',
+            'Calendar',
+            'Productivity',
+            'Husky',
+        ],
+        detail: 'High-density time tracking suite with a Google-style monthly calendar, ultra-compact timesheets, integrated slide-over panels, unified dashboard, and mobile-optimized bottom navigation.',
+        url: 'https://github.com/Haslab-dev/Timenotes',
+    },
+    {
+        work_title: 'MyAiRouter - High-Performance AI Gateway & Proxy',
+        type: 'Systems & Backend Engineering',
+        img_url: '/images/projects/myairouter.jpg',
+        tags: [
+            'Go',
+            'AI Gateway',
+            'High Performance',
+            'LLM Routing',
+            'Dashboard',
+        ],
+        detail: 'High-performance, ultra-low footprint AI model router and gateway inspired by 9router. Built with Go for multi-provider routing, load balancing, real-time analytics, and failover management.',
+        url: 'https://github.com/Haslab-dev/MyAiRouter',
+    },
+    {
         work_title: 'HasCode UI - Create UI with AI',
         type: 'Web Development',
         img_url:

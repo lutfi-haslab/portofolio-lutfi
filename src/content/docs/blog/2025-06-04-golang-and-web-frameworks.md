@@ -5,6 +5,10 @@ description: 'Golang and Web Frameworks: Exploring Gin, Fiber, Performance, and
 date: 2025-06-04T12:47:00.000Z
 authors:
     - lutfi
+tags:
+    - Architecture
+    - Go
+    - Backend
 cover:
     image: ../../../assets/images/what-is-golang.png
     alt: what-is-golang

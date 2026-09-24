@@ -7,6 +7,12 @@ description: Astro is a modern web framework focused on delivering
 date: 2025-05-08T19:06:00.000Z
 authors:
     - lutfi
+tags:
+    - Architecture
+    - Web
+cover:
+    image: https://cdn.buttercms.com/xrVbfdR5TBy4iTaY4xl7
+    alt: Astro Web Framework
 ---
 
 # 🌌 Introduction to Astro

@@ -1,132 +1,123 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { FiCommand, FiGithub, FiMenu, FiX } from 'react-icons/fi';
 
-const Header = () => {
-    const [showNavMobile, setShowNavMobile] = React.useState(false);
+const Header: React.FC = () => {
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const triggerPalette = () => {
+        window.dispatchEvent(new CustomEvent('open-command-palette'));
+    };
 
     return (
-        <header className="sticky top-0 z-50 backdrop-blur-md bg-gray-900/80 border-b border-gray-800">
-            <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-                <motion.div
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    className="flex items-center space-x-2"
-                >
-                    <img
-                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/cf51d4614b9df3de0b1afa110d29f9e9e58cabc5721e8169aaf817138c300f87?apiKey=b4b8e1120d4040cb8e27288270221f30&width=100 100w"
-                        className="w-10 h-10 rounded-full object-cover"
-                        alt="Profile"
-                    />
-                    <span className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                        Lutfi Ikbal Majid
-                    </span>
-                </motion.div>
+        <header className="sticky top-0 z-40 backdrop-blur-xl bg-gray-950/80 border-b border-gray-800/80 font-sans">
+            <div className="container mx-auto px-6 h-16 flex items-center justify-between max-w-5xl">
+                {/* Brand */}
+                <a href="/" className="flex items-center space-x-3 group">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center text-gray-950 font-bold font-mono text-sm shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                        L
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <span className="font-bold text-white tracking-wide text-sm sm:text-base">
+                            LUTFI
+                        </span>
+                        <span className="text-gray-600 hidden sm:inline">•</span>
+                        <span className="text-xs text-gray-400 font-mono hidden sm:inline">
+                            Software Engineer
+                        </span>
+                    </div>
+                </a>
 
-                {/* Desktop Navigation */}
-                <nav className="hidden md:flex items-center space-x-8">
-                    <a
-                        href="#home"
-                        className="hover:text-emerald-400 transition-colors"
-                    >
-                        Home
-                    </a>
-                    <a
-                        href="#about"
-                        className="hover:text-emerald-400 transition-colors"
-                    >
-                        About
-                    </a>
+                {/* Desktop Nav */}
+                <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
                     <a
                         href="/project"
-                        className="hover:text-emerald-400 transition-colors"
+                        className="text-gray-300 hover:text-white transition-colors"
                     >
                         Projects
                     </a>
                     <a
                         href="/blog"
-                        className="hover:text-emerald-400 transition-colors"
+                        className="text-gray-300 hover:text-white transition-colors"
                     >
-                        Blog
+                        Writings
                     </a>
                     <a
-                        href="/knowledge-base"
-                        className="hover:text-emerald-400 transition-colors"
+                        href="/about"
+                        className="text-gray-300 hover:text-white transition-colors"
                     >
-                        Knowledge Base
+                        About
                     </a>
                 </nav>
 
-                {/* Mobile Navigation Toggle */}
-                <button
-                    className="md:hidden text-gray-300 hover:text-white focus:outline-none"
-                    aria-label="Toggle navigation"
-                    onClick={() => setShowNavMobile(!showNavMobile)}
-                >
-                    <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                {/* Right Actions */}
+                <div className="hidden md:flex items-center space-x-3">
+                    <button
+                        onClick={triggerPalette}
+                        className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-gray-200 hover:border-gray-700 text-xs transition-all cursor-pointer"
+                        title="Search (⌘K)"
                     >
-                        {showNavMobile ? (
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        ) : (
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        )}
-                    </svg>
-                </button>
+                        <FiCommand className="w-3.5 h-3.5" />
+                        <span className="font-mono">Search</span>
+                        <kbd className="px-1.5 py-0.5 rounded bg-gray-800 text-gray-400 font-mono text-[10px] border border-gray-700">
+                            ⌘K
+                        </kbd>
+                    </button>
+
+                    <a
+                        href="https://github.com/Haslab-dev"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-white hover:border-gray-700 transition-colors"
+                        aria-label="GitHub Profile"
+                    >
+                        <FiGithub className="w-4 h-4" />
+                    </a>
+                </div>
+
+                {/* Mobile Controls */}
+                <div className="flex md:hidden items-center space-x-2">
+                    <button
+                        onClick={triggerPalette}
+                        className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-300"
+                        aria-label="Search"
+                    >
+                        <FiCommand className="w-4 h-4" />
+                    </button>
+                    <button
+                        onClick={() => setMobileOpen(!mobileOpen)}
+                        className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-300"
+                        aria-label="Toggle menu"
+                    >
+                        {mobileOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
+                    </button>
+                </div>
             </div>
 
-            {/* Mobile Navigation */}
-            {showNavMobile && (
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="md:hidden px-6 py-4 border-t border-gray-800"
-                >
-                    <div className="flex flex-col space-y-4">
-                        <a
-                            href="#home"
-                            className="hover:text-emerald-400 transition-colors"
-                        >
-                            Home
-                        </a>
-                        <a
-                            href="#about"
-                            className="hover:text-emerald-400 transition-colors"
-                        >
-                            About
-                        </a>
-                        <a
-                            href="/project"
-                            className="hover:text-emerald-400 transition-colors"
-                        >
-                            Projects
-                        </a>
-                        <a
-                            href="/blog"
-                            className="hover:text-emerald-400 transition-colors"
-                        >
-                            Blog
-                        </a>
-                        <a
-                            href="/knowledge-base"
-                            className="hover:text-emerald-400 transition-colors"
-                        >
-                            Knowledge Base
-                        </a>
-                    </div>
-                </motion.div>
+            {/* Mobile Dropdown */}
+            {mobileOpen && (
+                <div className="md:hidden border-t border-gray-800 bg-gray-950 px-6 py-4 space-y-3 font-mono text-sm">
+                    <a
+                        href="/project"
+                        className="block text-gray-300 hover:text-white py-1"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        → Projects
+                    </a>
+                    <a
+                        href="/blog"
+                        className="block text-gray-300 hover:text-white py-1"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        → Writings
+                    </a>
+                    <a
+                        href="/about"
+                        className="block text-gray-300 hover:text-white py-1"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        → About
+                    </a>
+                </div>
             )}
         </header>
     );

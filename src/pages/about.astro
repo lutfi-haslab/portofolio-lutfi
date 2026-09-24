@@ -1,0 +1,109 @@
+---
+import Layout from '../layout/Layout.astro';
+import { FiUser, FiCpu, FiTerminal, FiAward, FiGithub, FiExternalLink } from 'react-icons/fi';
+---
+
+<Layout title="About Lutfi">
+    <div class="container mx-auto px-6 py-12 max-w-4xl space-y-16">
+        <header class="space-y-4 border-b border-gray-800 pb-8">
+            <div class="inline-flex items-center space-x-2 text-xs font-mono text-emerald-400">
+                <FiUser />
+                <span>ENGINEER PROFILE</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+                Lutfi Ikbal Majid
+            </h1>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                Software Engineer passionate about native developer tooling, autonomous AI agent systems, blockchain architectures, and high-performance backend gateways.
+            </p>
+        </header>
+
+        <!-- Bio & Background -->
+        <section class="space-y-4">
+            <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                <FiCpu className="text-emerald-400" />
+                <span>Background & Philosophy</span>
+            </h2>
+            <div class="text-gray-300 text-sm leading-relaxed space-y-4">
+                <p>
+                    I graduated with a degree in Engineering Physics (Teknik Fisika) from Telkom University. My engineering background taught me to think from first principles—whether modeling physical sensors or architecting low-latency distributed networks.
+                </p>
+                <p>
+                    Currently working as a Software Developer with focus on mission-critical applications, including Central Bank Digital Currency (CBDC) prototypes, high-density productivity tools, autonomous AI agent platforms (<a href="/project/kendaliai" class="text-emerald-400 underline">KendaliAI</a>), and native developer environments (<a href="/project/forgeade" class="text-emerald-400 underline">ForgeADE</a>).
+                </p>
+                <p>
+                    I prefer native and lightweight architectures over heavy bloat: Go for gateways, Wails over Electron for desktop, and Astro for zero-JS-by-default web experiences.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="space-y-4 pt-8 border-t border-gray-900">
+            <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                <FiTerminal className="text-cyan-400" />
+                <span>Core Tooling & Technologies</span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800">
+                    <div class="text-xs font-mono text-emerald-400 font-bold uppercase mb-2">Systems & Languages</div>
+                    <ul class="text-xs text-gray-300 space-y-1 font-mono">
+                        <li>• Go (Golang)</li>
+                        <li>• TypeScript / JavaScript</li>
+                        <li>• Python (OpenCV, AI)</li>
+                        <li>• Kotlin / Swift (Native)</li>
+                    </ul>
+                </div>
+                <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800">
+                    <div class="text-xs font-mono text-cyan-400 font-bold uppercase mb-2">Frontend & Native</div>
+                    <ul class="text-xs text-gray-300 space-y-1 font-mono">
+                        <li>• React & Next.js</li>
+                        <li>• Astro 7 & Vite</li>
+                        <li>• Wails (Desktop)</li>
+                        <li>• Tailwind CSS 4</li>
+                    </ul>
+                </div>
+                <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800">
+                    <div class="text-xs font-mono text-purple-400 font-bold uppercase mb-2">Infra & Ecosystem</div>
+                    <ul class="text-xs text-gray-300 space-y-1 font-mono">
+                        <li>• Vector RAG Pipelines</li>
+                        <li>• Docker & Docker Compose</li>
+                        <li>• Cloudflare Pages / Workers</li>
+                        <li>• Blockchain (Besu, Solidity)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Focus ("Now") -->
+        <section class="space-y-4 pt-8 border-t border-gray-900">
+            <h2 class="text-xl font-bold text-white">
+                Now <span class="text-xs font-mono text-gray-500 font-normal ml-2">What I'm currently focused on</span>
+            </h2>
+            <div class="p-6 rounded-2xl bg-gray-900/40 border border-gray-800 space-y-3 text-xs sm:text-sm text-gray-300 leading-relaxed font-mono">
+                <p class="flex items-center space-x-2 text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Hacking on ForgeADE: AI-first native developer workspace in Wails.</span>
+                </p>
+                <p>• Refining MyAiRouter: Benchmarking ultra-low latency failovers in Go.</p>
+                <p>• Exploring multi-agent collaboration protocols and autonomous task delegation.</p>
+            </div>
+        </section>
+
+        <!-- Connect -->
+        <section class="pt-8 border-t border-gray-900 flex flex-wrap items-center justify-between gap-4">
+            <div class="text-xs font-mono text-gray-400">
+                Interested in collaboration or architecture discussions?
+            </div>
+            <a
+                href="https://github.com/Haslab-dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-gray-900 hover:bg-gray-800 border border-gray-800 text-white font-mono text-xs transition-colors"
+            >
+                <FiGithub />
+                <span>github.com/Haslab-dev</span>
+                <FiExternalLink className="w-3.5 h-3.5 ml-1" />
+            </a>
+        </section>
+    </div>
+</Layout>
