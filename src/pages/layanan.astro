@@ -1,0 +1,446 @@
+---
+import Layout from '../layout/Layout.astro';
+import {
+    FiArrowRight,
+    FiCheck,
+    FiCpu,
+    FiDatabase,
+    FiFileText,
+    FiGithub,
+    FiLink,
+    FiMessageSquare,
+    FiMonitor,
+    FiRepeat,
+    FiVideo,
+    FiZap,
+} from 'react-icons/fi';
+
+const LINKEDIN_URL = 'https://www.linkedin.com/in/lutfi-ikbal-majid-044184172';
+const THREADS_URL = 'https://www.threads.com/@lutzfy.21';
+
+const problems = [
+    {
+        title: 'Rekap laporan masih manual',
+        detail:
+            'Setiap minggu ada saja yang menyalin angka dari spreadsheet, chat, dan beberapa aplikasi ke satu laporan. Pekerjaannya tidak sulit, tapi menghabiskan jam kerja orang yang seharusnya mengerjakan hal lain.',
+    },
+    {
+        title: 'Dokumen menumpuk, jawaban berulang',
+        detail:
+            'SOP, kontrak, dan panduan tersebar di banyak folder. Setiap pertanyaan yang sama harus dicari dan dijawab manual, padahal jawabannya sudah ada di dokumen sendiri.',
+    },
+    {
+        title: 'Data tersebar, copy-paste antar aplikasi',
+        detail:
+            'Form masuk di satu tempat, dicatat ulang di tempat lain, lalu diberitahukan lagi lewat chat. Setiap perpindahan manual adalah peluang salah salin dan pekerjaan yang tertunda.',
+    },
+    {
+        title: 'Pertanyaan yang sama dijawab terus',
+        detail:
+            'Tim support dan operasional menjawab pertanyaan yang pola jawabannya sebenarnya tetap. Tanpa bantuan sistem, waktu habis untuk hal yang bisa ditangani otomatis lebih dulu.',
+    },
+];
+
+const services = [
+    {
+        icon: 'repeat',
+        title: 'Otomasi Laporan & Dokumen',
+        detail:
+            'Alur laporan berkala, pengolahan dokumen, dan notifikasi yang selama ini dikerjakan manual diubah menjadi proses otomatis yang berjalan sendiri dan bisa diperiksa hasilnya.',
+        points: ['Laporan mingguan/bulanan otomatis', 'Ekstraksi data dari dokumen', 'Notifikasi hasil ke chat atau email'],
+    },
+    {
+        icon: 'message',
+        title: 'Asisten AI atas Dokumenmu',
+        detail:
+            'Chatbot internal yang menjawab berdasarkan dokumen milik timmu sendiri, bukan karangan model. Cocok untuk SOP, panduan produk, dan basis pengetahuan yang selama ini sulit dicari.',
+        points: ['Jawaban berbasis dokumen resmi', 'Pencarian cepat lintas folder', 'Jawaban menyertakan sumbernya'],
+    },
+    {
+        icon: 'link',
+        title: 'Integrasi Antar Aplikasi',
+        detail:
+            'Aplikasi yang selama ini berdiri sendiri dihubungkan dalam satu alur: data masuk sekali, lalu mengalir ke pencatatan, notifikasi, dan tindak lanjut tanpa disalin ulang.',
+        points: ['Form → database → notifikasi', 'Sinkronisasi data antar layanan', 'Webhook dan API custom'],
+    },
+    {
+        icon: 'monitor',
+        title: 'Dashboard & Tools Internal',
+        detail:
+            'Tools kecil yang dirancang untuk satu pekerjaan spesifik timmu: memantau antrean, menyetujui dokumen, atau melihat ringkasan operasional tanpa membuka lima aplikasi.',
+        points: ['Dashboard operasional ringan', 'Tools persetujuan & antrean kerja', 'Dibangun sesuai alur tim, bukan template'],
+    },
+];
+
+const packages = [
+    {
+        name: 'Sprint Otomasi',
+        price: 'Mulai Rp3 juta',
+        estimate: 'Estimasi 1–2 minggu',
+        desc: 'Untuk satu pekerjaan berulang yang ingin segera dibereskan.',
+        points: [
+            '1 alur otomasi end-to-end',
+            'Integrasi ke spreadsheet, API, atau chat yang sudah dipakai',
+            'Dokumentasi cara pakai singkat',
+            'Revisi minor selama 14 hari setelah serah terima',
+        ],
+        featured: false,
+    },
+    {
+        name: 'Asisten AI Internal',
+        price: 'Mulai Rp8 juta',
+        estimate: 'Estimasi 2–4 minggu',
+        desc: 'Untuk tim yang dokumennya sudah banyak dan mulai sulit dikelola manual.',
+        points: [
+            'Asisten tanya-jawab berbasis dokumenmu',
+            'Pengaturan akses per tim atau peran',
+            'Jawaban dilengkapi rujukan sumber',
+            'Sesi pelatihan singkat untuk tim',
+            'Revisi minor selama 14 hari setelah serah terima',
+        ],
+        featured: true,
+    },
+    {
+        name: 'Integrasi & Sistem Khusus',
+        price: 'Mulai Rp10 juta',
+        estimate: 'Timeline mengikuti scope',
+        desc: 'Untuk alur lintas aplikasi atau tools internal yang memang harus dirancang khusus.',
+        points: [
+            'Perancangan arsitektur sebelum dibangun',
+            'Integrasi beberapa sistem sekaligus',
+            'Dashboard atau tools internal custom',
+            'Dokumentasi teknis dan serah terima penuh',
+        ],
+        featured: false,
+    },
+];
+
+const steps = [
+    {
+        title: 'Diskusi dan pemetaan masalah',
+        detail:
+            'Kita mulai dari obrolan singkat tentang proses mana yang paling menghabiskan waktu. Kalau ternyata otomasi bukan jawabannya, akan kukatakan apa adanya sejak awal.',
+    },
+    {
+        title: 'Proposal tertulis',
+        detail:
+            'Scope pekerjaan, harga, dan timeline ditulis jelas sebelum apa pun dibangun. Tidak ada biaya tambahan yang muncul tiba-tiba di tengah jalan.',
+    },
+    {
+        title: 'Pengerjaan bertahap',
+        detail:
+            'Pekerjaan dibangun per tahap dengan demo berkala, jadi kamu bisa melihat hasilnya sejak awal dan memberi masukan sebelum terlanjur jauh.',
+    },
+    {
+        title: 'Serah terima dan pendampingan',
+        detail:
+            'Sistem diserahkan lengkap dengan dokumentasi cara pakai. Setelah itu tersedia opsi retainer bila ingin pemeliharaan dan pengembangan berlanjut.',
+    },
+];
+
+const faqs = [
+    {
+        q: 'Berapa lama pengerjaannya?',
+        a: 'Otomasi satu alur sederhana biasanya selesai dalam 1–2 minggu. Asisten AI dan integrasi yang lebih besar berkisar 2–4 minggu, tergantung kesiapan data dan akses ke sistem yang sudah ada. Timeline pastinya selalu tertulis di proposal.',
+    },
+    {
+        q: 'Apakah data perusahaanku aman?',
+        a: 'Akses hanya diminta seperlunya untuk pekerjaan itu, kredensial tetap milikmu, dan aku terbuka menandatangani NDA bila dibutuhkan. Sistem dirancang agar data dokumenmu tidak dipakai untuk hal lain di luar layananmu.',
+    },
+    {
+        q: 'Harus punya server sendiri?',
+        a: 'Tidak selalu. Banyak otomasi bisa berjalan di layanan serverless seperti Cloudflare dengan biaya operasional yang sangat kecil. Pilihan infrastrukturnya dibahas di awal, termasuk perkiraan biaya bulanannya, sebelum kamu memutuskan.',
+    },
+    {
+        q: 'Siapa yang mengerjakan proyeknya?',
+        a: 'Langsung aku sendiri, bukan dilempar ke pihak lain. Layanan ini kujalankan di luar jam kerja utamaku, jadi slotnya memang terbatas: maksimal dua proyek berjalan dalam satu waktu agar setiap proyek tetap terpegang dengan benar.',
+    },
+    {
+        q: 'Bagaimana skema pembayarannya?',
+        a: 'Umumnya 50% di awal sebagai tanda mulai, sisanya setelah serah terima dan sistem terbukti berjalan sesuai scope. Untuk retainer pemeliharaan, pembayaran dilakukan bulanan di awal bulan.',
+    },
+];
+
+const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Jasa Otomasi & Asisten AI — Lutfi Ikbal Majid',
+    description:
+        'Jasa otomasi laporan dan dokumen, asisten AI berbasis dokumen internal, integrasi antar aplikasi, dan dashboard internal untuk tim kecil dan bisnis di Indonesia.',
+    provider: { '@id': 'https://lutfiikbalmajid.pages.dev/#person' },
+    areaServed: 'ID',
+    serviceType: 'AI Automation Consulting & Development',
+};
+---
+
+<Layout
+    title="Layanan Otomasi & AI"
+    description="Jasa otomasi laporan, dokumen, dan alur kerja dengan AI untuk tim kecil dan bisnis: dikerjakan langsung oleh Lutfi Ikbal Majid, dengan paket dan harga yang jelas sejak awal."
+    keywords="jasa otomasi, jasa automation AI, chatbot dokumen, integrasi aplikasi, freelance software engineer Jakarta"
+    schema={serviceSchema}
+>
+    <div class="container mx-auto px-6 py-16 max-w-5xl space-y-24 font-sans">
+
+        {/* HERO */}
+        <section class="space-y-6 pt-6">
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-800/60 text-emerald-400 font-mono text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Layanan Haslab — slot maksimal 2 proyek berjalan</span>
+                </span>
+                <span class="text-xs font-mono text-gray-500">Jakarta, Indonesia • remote</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight max-w-3xl">
+                Pekerjaan berulang di timmu itu mahal. <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500">Otomatiskan saja.</span>
+            </h1>
+
+            <div class="space-y-4 max-w-2xl">
+                <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+                    Aku Lutfi Ikbal Majid, software engineer dan systems architect. Di luar pekerjaan utamaku, aku membuka slot terbatas untuk membantu tim kecil dan bisnis mengotomatiskan laporan, dokumen, dan alur kerja dengan bantuan AI, tanpa perlu merekrut engineer baru.
+                </p>
+                <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+                    Buatku, ukurannya sederhana: otomasi yang baik bukan yang paling canggih, tapi yang benar-benar menghemat waktu dan biaya setiap minggunya. Kalau sebuah proses hanya terjadi sebulan sekali, misalnya, sering kali lebih masuk akal dibiarkan manual, dan hal seperti itu akan kukatakan sejak awal.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+                <a
+                    href={LINKEDIN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-gray-950 font-bold text-sm transition-all transform active:scale-95 shadow-lg shadow-emerald-500/20"
+                >
+                    Diskusi Kebutuhan via LinkedIn
+                </a>
+                <a
+                    href="#paket"
+                    class="px-5 py-3 rounded-xl bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-medium text-sm transition-all"
+                >
+                    Lihat Paket &amp; Harga →
+                </a>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+                {['Go', 'TypeScript', 'Python', 'React', 'Cloudflare Workers', 'LLM & RAG', 'API Integration', 'Remotion'].map((tech) => (
+                    <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-gray-900 border border-gray-800 text-gray-300">{tech}</span>
+                ))}
+            </div>
+        </section>
+
+        {/* MASALAH */}
+        <section id="masalah" class="space-y-8 scroll-mt-20">
+            <div class="border-b border-gray-800 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Masalah yang paling sering kutemui</h2>
+                <p class="text-sm text-gray-400 mt-1">Kalau satu saja dari ini terasa familiar, kemungkinan besar prosesnya layak diotomatiskan.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {problems.map((p) => (
+                    <div class="rounded-2xl border border-gray-800 bg-gray-900/40 hover:bg-gray-900/80 hover:border-gray-700 p-6 transition-all">
+                        <h3 class="font-bold text-white">{p.title}</h3>
+                        <p class="text-sm text-gray-400 mt-2 leading-relaxed">{p.detail}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        {/* LAYANAN UTAMA */}
+        <section id="layanan" class="space-y-8 scroll-mt-20">
+            <div class="border-b border-gray-800 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Layanan utama</h2>
+                <p class="text-sm text-gray-400 mt-1">Empat bentuk pekerjaan yang paling sering dibutuhkan tim kecil dan bisnis yang sedang bertumbuh.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {services.map((s) => (
+                    <div class="rounded-2xl border border-gray-800 bg-gray-900/40 hover:bg-gray-900/80 hover:border-emerald-800/60 p-6 transition-all space-y-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center text-emerald-400">
+                            {s.icon === 'repeat' && <FiRepeat className="w-5 h-5" />}
+                            {s.icon === 'message' && <FiMessageSquare className="w-5 h-5" />}
+                            {s.icon === 'link' && <FiLink className="w-5 h-5" />}
+                            {s.icon === 'monitor' && <FiMonitor className="w-5 h-5" />}
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white">{s.title}</h3>
+                            <p class="text-sm text-gray-400 mt-2 leading-relaxed">{s.detail}</p>
+                        </div>
+                        <ul class="space-y-1.5">
+                            {s.points.map((point) => (
+                                <li class="flex items-start space-x-2 text-xs text-gray-300">
+                                    <FiCheck className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
+                                    <span>{point}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        {/* PAKET & HARGA */}
+        <section id="paket" class="space-y-8 scroll-mt-20">
+            <div class="border-b border-gray-800 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Paket &amp; harga</h2>
+                <p class="text-sm text-gray-400 mt-1">
+                    Harga di bawah adalah titik mulai untuk scope standar. Angka final selalu disepakati dalam proposal tertulis sebelum pekerjaan dimulai, jadi tidak ada kejutan di tengah jalan.
+                </p>
+            </div>
+
+            <div class="rounded-2xl border border-cyan-800/60 bg-cyan-950/20 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-start space-x-3">
+                    <FiZap className="w-5 h-5 text-cyan-400 mt-0.5 shrink-0" />
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <span class="font-bold text-white">Belum yakin harus mulai dari mana?</span> Mulai dari sesi konsultasi dan audit proses 60 menit, <span class="font-bold text-white">Rp350 ribu</span>. Biayanya dipotong dari nilai proyek bila kamu lanjut ke salah satu paket.
+                    </p>
+                </div>
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="shrink-0 px-4 py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 border border-gray-700 text-gray-200 font-semibold text-xs transition-all">
+                    Jadwalkan Konsultasi
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {packages.map((pkg) => (
+                    <div class={`rounded-2xl border p-6 flex flex-col space-y-5 transition-all ${pkg.featured ? 'border-emerald-700/70 bg-emerald-950/20 shadow-xl shadow-emerald-950/30' : 'border-gray-800 bg-gray-900/40'}`}>
+                        <div>
+                            {pkg.featured && (
+                                <span class="inline-block px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500 text-gray-950 mb-3">Paling sering dipilih</span>
+                            )}
+                            <h3 class="text-lg font-bold text-white">{pkg.name}</h3>
+                            <div class="mt-2 text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">{pkg.price}</div>
+                            <div class="text-xs font-mono text-gray-500 mt-1">{pkg.estimate}</div>
+                            <p class="text-sm text-gray-400 mt-3 leading-relaxed">{pkg.desc}</p>
+                        </div>
+                        <ul class="space-y-2 flex-grow">
+                            {pkg.points.map((point) => (
+                                <li class="flex items-start space-x-2 text-sm text-gray-300">
+                                    <FiCheck className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+                                    <span>{point}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <a
+                            href={LINKEDIN_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={`inline-flex items-center justify-center space-x-2 px-4 py-3 rounded-xl font-bold text-sm transition-all ${pkg.featured ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-gray-950 shadow-lg shadow-emerald-500/20' : 'bg-gray-900 hover:bg-gray-800 border border-gray-700 text-gray-200'}`}
+                        >
+                            <span>Mulai dari Paket Ini</span>
+                            <FiArrowRight className="w-4 h-4" />
+                        </a>
+                    </div>
+                ))}
+            </div>
+
+            <div class="rounded-2xl border border-gray-800 bg-gray-900/40 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex items-start space-x-3">
+                    <FiDatabase className="w-5 h-5 text-emerald-400 mt-0.5 shrink-0" />
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <span class="font-bold text-white">Retainer pemeliharaan, mulai Rp750 ribu/bulan.</span> Untuk pemantauan sistem, perbaikan kecil, dan pengembangan bertahap setelah proyek pertama selesai. Opsional, tanpa kontrak jangka panjang.
+                    </p>
+                </div>
+                <a href="/project" class="shrink-0 text-xs font-mono text-emerald-400 hover:text-emerald-300 font-semibold">Lihat contoh pekerjaanku →</a>
+            </div>
+        </section>
+
+        {/* CARA KERJA */}
+        <section id="proses" class="space-y-8 scroll-mt-20">
+            <div class="border-b border-gray-800 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Cara kerja</h2>
+                <p class="text-sm text-gray-400 mt-1">Prosesnya dibuat sederhana dan transparan, karena menurutku kepercayaan dibangun dari kejelasan, bukan dari janji.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {steps.map((step, i) => (
+                    <div class="rounded-2xl border border-gray-800 bg-gray-900/40 p-6 space-y-2">
+                        <div class="font-mono text-xs font-bold text-emerald-400">LANGKAH {i + 1}</div>
+                        <h3 class="font-bold text-white">{step.title}</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">{step.detail}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        {/* LAYANAN PENDUKUNG */}
+        <section id="pendukung" class="space-y-8 scroll-mt-20">
+            <div class="border-b border-gray-800 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Layanan pendukung</h2>
+                <p class="text-sm text-gray-400 mt-1">Dua layanan lain yang sering diminta bersamaan, atau berdiri sendiri juga bisa.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="rounded-2xl border border-gray-800 bg-gray-900/40 hover:bg-gray-900/80 p-6 transition-all space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center text-emerald-400">
+                        <FiVideo className="w-5 h-5" />
+                    </div>
+                    <h3 class="font-bold text-white">Video Konten Otomatis (Remotion)</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Video promosi dan konten berkala yang diproduksi dari template terprogram, jadi datanya bisa diganti tanpa mengedit ulang dari nol. Mulai <span class="text-gray-200 font-semibold">Rp500 ribu per video</span>, tersedia juga paket bulanan.
+                    </p>
+                </div>
+                <div class="rounded-2xl border border-gray-800 bg-gray-900/40 hover:bg-gray-900/80 p-6 transition-all space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-800/60 flex items-center justify-center text-emerald-400">
+                        <FiFileText className="w-5 h-5" />
+                    </div>
+                    <h3 class="font-bold text-white">Website &amp; Landing Page</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Website ringan dan cepat dengan stack modern, seperti situs yang sedang kamu baca ini. Mulai <span class="text-gray-200 font-semibold">Rp1,5 juta</span>, sudah termasuk bantuan deploy dan pengaturan dasar.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" class="space-y-8 scroll-mt-20">
+            <div class="border-b border-gray-800 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Pertanyaan yang sering muncul</h2>
+            </div>
+            <div class="space-y-4">
+                {faqs.map((f) => (
+                    <div class="rounded-2xl border border-gray-800 bg-gray-900/40 p-6">
+                        <h3 class="font-bold text-white">{f.q}</h3>
+                        <p class="text-sm text-gray-400 mt-2 leading-relaxed">{f.a}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        {/* CTA AKHIR */}
+        <section class="rounded-3xl border border-emerald-800/60 bg-gradient-to-b from-emerald-950/40 to-gray-950 p-8 sm:p-10 space-y-5">
+            <div class="flex items-center space-x-2 text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
+                <FiCpu />
+                <span>Mulai dari satu proses dulu</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight max-w-2xl">
+                Punya proses yang setiap minggu menghabiskan waktu timmu?
+            </h2>
+            <p class="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl">
+                Ceritakan saja dulu prosesnya seperti apa. Dari situ kita lihat sama-sama apakah layak diotomatiskan, berapa perkiraan biayanya, dan berapa waktu yang realistis bisa dihemat. Belum tentu harus langsung jadi proyek, yang penting keputusannya diambil dari angka yang jelas.
+            </p>
+            <div class="flex flex-wrap items-center gap-4">
+                <a
+                    href={LINKEDIN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-gray-950 font-bold text-sm transition-all transform active:scale-95 shadow-lg shadow-emerald-500/20"
+                >
+                    Hubungi via LinkedIn
+                </a>
+                <a
+                    href={THREADS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-5 py-3 rounded-xl bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-medium text-sm transition-all"
+                >
+                    DM via Threads @lutzfy.21
+                </a>
+                <a
+                    href="https://github.com/Haslab-dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors"
+                >
+                    <FiGithub className="w-4 h-4" />
+                    <span>github.com/Haslab-dev</span>
+                </a>
+            </div>
+        </section>
+
+    </div>
+</Layout>

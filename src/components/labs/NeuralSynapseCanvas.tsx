@@ -5,16 +5,28 @@ import { FiPlay, FiRefreshCw, FiZap, FiSliders, FiSun, FiLayers } from 'react-ic
 interface Props {
     interactiveControls?: boolean;
     compact?: boolean;
+    background?: boolean;
+    backgroundClassName?: string;
+    zoom?: number;
+    initialTheme?: 'emerald' | 'cyan' | 'violet';
+    initialDensity?: number;
+    initialVelocity?: number;
 }
 
-export const NeuralSynapseCanvas: React.FC<Props> = ({ 
+export const NeuralSynapseCanvas: React.FC<Props> = ({
     interactiveControls = true,
-    compact = false 
+    compact = false,
+    background = false,
+    backgroundClassName,
+    zoom = 1,
+    initialTheme = 'emerald',
+    initialDensity = 45,
+    initialVelocity = 1.2
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [theme, setTheme] = useState<'emerald' | 'cyan' | 'violet'>('emerald');
-    const [synapseDensity, setSynapseDensity] = useState<number>(45);
-    const [pulseSpeed, setPulseSpeed] = useState<number>(1.2);
+    const [theme, setTheme] = useState<'emerald' | 'cyan' | 'violet'>(initialTheme);
+    const [synapseDensity, setSynapseDensity] = useState<number>(initialDensity);
+    const [pulseSpeed, setPulseSpeed] = useState<number>(initialVelocity);
     const [nodeCount, setNodeCount] = useState<number>(120);
     const [firingCount, setFiringCount] = useState<number>(0);
     const [fps, setFps] = useState<number>(60);
@@ -60,12 +72,12 @@ export const NeuralSynapseCanvas: React.FC<Props> = ({
         const height = container.clientHeight || (compact ? 300 : 500);
 
         const camera = new THREE.PerspectiveCamera(55, width / height, 1, 1000);
-        camera.position.z = 180;
+        camera.position.z = 180 / zoom;
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
         renderer.setSize(width, height);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.setClearColor(currentPalette.bg, 0.95);
+        renderer.setClearColor(currentPalette.bg, background ? 0 : 0.95);
         container.innerHTML = '';
         container.appendChild(renderer.domElement);
 
@@ -269,9 +281,9 @@ export const NeuralSynapseCanvas: React.FC<Props> = ({
         const animate = (currentTime: number) => {
             animationFrameId = requestAnimationFrame(animate);
 
-            // FPS Counter
+            // FPS Counter (skipped in background mode to avoid pointless re-renders)
             frameCounter++;
-            if (currentTime - lastFpsUpdate >= 1000) {
+            if (!background && currentTime - lastFpsUpdate >= 1000) {
                 setFps(frameCounter);
                 frameCounter = 0;
                 lastFpsUpdate = currentTime;
@@ -400,7 +412,15 @@ export const NeuralSynapseCanvas: React.FC<Props> = ({
             pulseMaterial.dispose();
             particleTexture.dispose();
         };
-    }, [theme, synapseDensity, pulseSpeed, nodeCount]);
+    }, [theme, synapseDensity, pulseSpeed, nodeCount, background, zoom]);
+
+    if (background) {
+        return (
+            <div className={backgroundClassName ?? 'absolute inset-0 overflow-hidden pointer-events-none'} aria-hidden="true">
+                <div ref={containerRef} className="w-full h-full" />
+            </div>
+        );
+    }
 
     return (
         <div className="relative w-full rounded-2xl overflow-hidden border border-gray-800 bg-gray-950 font-sans shadow-2xl">

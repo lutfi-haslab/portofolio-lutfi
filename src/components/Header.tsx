@@ -36,6 +36,12 @@ const Header: React.FC = () => {
                         Projects
                     </a>
                     <a
+                        href="/layanan"
+                        className="text-gray-300 hover:text-emerald-400 transition-colors"
+                    >
+                        Layanan
+                    </a>
+                    <a
                         href="/labs"
                         className="text-gray-300 hover:text-emerald-400 transition-colors flex items-center space-x-1.5"
                     >
@@ -111,6 +117,13 @@ const Header: React.FC = () => {
                         onClick={() => setMobileOpen(false)}
                     >
                         → Projects
+                    </a>
+                    <a
+                        href="/layanan"
+                        className="block text-gray-300 hover:text-white py-1"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        → Layanan
                     </a>
                     <a
                         href="/labs"
