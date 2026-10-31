@@ -1,6 +1,6 @@
 ---
 import Layout from '../layout/Layout.astro';
-import { FiUser, FiCpu, FiTerminal, FiAward, FiGithub, FiExternalLink } from 'react-icons/fi';
+import { FiUser, FiCpu, FiTerminal, FiAward, FiGithub, FiExternalLink, FiBriefcase, FiBookOpen } from 'react-icons/fi';
 const siteBaseUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://lutfiikbalmajid.pages.dev';
 
 const profileSchema = {
@@ -10,7 +10,11 @@ const profileSchema = {
         '@type': 'Person',
         '@id': `${siteBaseUrl}/#person`,
         name: 'Lutfi Ikbal Majid',
-        jobTitle: 'Senior Software Engineer & Systems Architect',
+        jobTitle: 'Software Engineer & Systems Architect',
+        worksFor: [
+            { '@type': 'Organization', name: 'Peruri' },
+            { '@type': 'Organization', name: 'HasLab AI' },
+        ],
         alumniOf: {
             '@type': 'CollegeOrUniversity',
             name: 'Telkom University',
@@ -52,7 +56,7 @@ const profileSchema = {
                 Lutfi Ikbal Majid
             </h1>
             <p class="text-gray-400 text-lg leading-relaxed">
-                Software Engineer passionate about native developer tooling, autonomous AI agent systems, blockchain architectures, and high-performance backend gateways.
+                Software Engineer and AI enthusiast based in East Jakarta, Indonesia. Full-stack developer with leadership experience in cutting-edge research projects — from a Central Bank Digital Currency prototype and Blockchain-as-a-Service platforms to national-scale e-government mobile apps — and published researcher in atmospheric sensing.
             </p>
         </header>
 
@@ -67,7 +71,7 @@ const profileSchema = {
                     I graduated with a degree in Engineering Physics (Teknik Fisika) from Telkom University. My engineering background taught me to think from first principles—whether modeling physical sensors or architecting low-latency distributed networks.
                 </p>
                 <p>
-                    Currently working as a Software Developer with focus on mission-critical applications, including Central Bank Digital Currency (CBDC) prototypes, high-density productivity tools, autonomous AI agent platforms (<a href="/project/kendaliai" class="text-emerald-400 underline">KendaliAI</a>), and native developer environments (<a href="/project/forgeade" class="text-emerald-400 underline">ForgeADE</a>).
+                    I currently build e-government (SPBE) systems at Peruri — designing software architecture and shipping the INAgov (SmartASN) mobile app in React Native to the Play Store and App Store — while leading AI research as CTO of HasLab AI. Before that I spent three years as a researcher at Peruri working on blockchain (Hyperledger Fabric, Ethereum, Kaleido), digital seals, and IoT platforms, after earlier full-stack and electrical R&D roles and published atmospheric-science research at Telkom University.
                 </p>
                 <p>
                     I prefer native and lightweight architectures over heavy bloat: Go for gateways, Wails over Electron for desktop, and Astro for zero-JS-by-default web experiences.
@@ -112,6 +116,145 @@ const profileSchema = {
             </div>
         </section>
 
+        <!-- Experience -->
+        <section class="space-y-6 pt-8 border-t border-gray-900">
+            <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                <FiBriefcase className="text-emerald-400" />
+                <span>Experience</span>
+            </h2>
+            <div class="space-y-8 border-l border-gray-800 pl-6">
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                    <h3 class="text-white font-bold">Developer, Sistem Pemerintahan Berbasis Elektronik (SPBE) — <span class="text-emerald-400">Peruri</span></h3>
+                    <p class="text-xs font-mono text-gray-500 mt-0.5">April 2024 — Present · Jakarta, Indonesia</p>
+                    <ul class="text-sm text-gray-300 leading-relaxed mt-2 space-y-1 list-disc list-inside">
+                        <li>Design and implement software architecture for e-government systems</li>
+                        <li>Develop mobile applications using React Native for INAgov (SmartASN)</li>
+                        <li>Deploy mobile applications to the Play Store and App Store</li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                    <h3 class="text-white font-bold">Chief Technology Officer, AI Researcher — <span class="text-emerald-400">HasLab AI</span></h3>
+                    <p class="text-xs font-mono text-gray-500 mt-0.5">August 2023 — Present · Jakarta, Indonesia</p>
+                    <ul class="text-sm text-gray-300 leading-relaxed mt-2 space-y-1 list-disc list-inside">
+                        <li>Lead AI research and product engineering under the HasLab label</li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-600"></span>
+                    <h3 class="text-white font-bold">Blockchain Developer — <span class="text-emerald-400">Peruri</span></h3>
+                    <p class="text-xs font-mono text-gray-500 mt-0.5">August 2022 — October 2023 · Karawang, West Java</p>
+                    <ul class="text-sm text-gray-300 leading-relaxed mt-2 space-y-1 list-disc list-inside">
+                        <li>Lead research on blockchain use cases utilizing Hyperledger Fabric, Ethereum, and the Kaleido Platform</li>
+                        <li>Develop and implement innovative blockchain solutions to improve system efficiency</li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-600"></span>
+                    <h3 class="text-white font-bold">Tech Lead Researchers — <span class="text-emerald-400">Peruri</span></h3>
+                    <p class="text-xs font-mono text-gray-500 mt-0.5">April 2022 — October 2023 · Karawang, West Java</p>
+                    <ul class="text-sm text-gray-300 leading-relaxed mt-2 space-y-1 list-disc list-inside">
+                        <li>Lead the Digital Seal project, an application for secured documents using Guardtime KSI Blockchain</li>
+                        <li>Develop a mobile verification app using Kotlin, completing the project within 2 weeks</li>
+                        <li>Oversee iOS app development using React Native</li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-600"></span>
+                    <h3 class="text-white font-bold">IoT Developer &amp; Researchers — <span class="text-emerald-400">Peruri</span></h3>
+                    <p class="text-xs font-mono text-gray-500 mt-0.5">September 2021 — September 2022 · Karawang, West Java</p>
+                    <ul class="text-sm text-gray-300 leading-relaxed mt-2 space-y-1 list-disc list-inside">
+                        <li>Lead the Community of Practice for Internet of Things in Peruri Group for digital capabilities</li>
+                        <li>Develop the Internet of Things curriculum</li>
+                        <li>Create an IoT platform using the MERN stack</li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-600"></span>
+                    <h3 class="text-white font-bold">Full-stack Developer — <span class="text-emerald-400">Sinari Indonesia</span></h3>
+                    <p class="text-xs font-mono text-gray-500 mt-0.5">December 2020 — March 2021 · Kota Tangerang, Banten</p>
+                    <ul class="text-sm text-gray-300 leading-relaxed mt-2 space-y-1 list-disc list-inside">
+                        <li>Developed backend and frontend for the Sinari platform to collect data from farmers, suppliers, and buyers</li>
+                        <li>Performed data analysis using Python</li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-600"></span>
+                    <h3 class="text-white font-bold">Electrical Engineer | RnD — <span class="text-emerald-400">Sinari Indonesia</span></h3>
+                    <p class="text-xs font-mono text-gray-500 mt-0.5">February 2020 — December 2020 · Alam Sutera</p>
+                    <ul class="text-sm text-gray-300 leading-relaxed mt-2 space-y-1 list-disc list-inside">
+                        <li>Conducted research and development on electrical and instrumentation systems, including IoT integration</li>
+                        <li>Developed a new product: a power bank with photovoltaic capabilities</li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-600"></span>
+                    <h3 class="text-white font-bold">Internship — <span class="text-emerald-400">Indonesian Institute of Sciences (LIPI)</span></h3>
+                    <p class="text-xs font-mono text-gray-500 mt-0.5">May 2017 — August 2017 · West Java, Indonesia</p>
+                    <ul class="text-sm text-gray-300 leading-relaxed mt-2 space-y-1 list-disc list-inside">
+                        <li>Characterization of thin-film carbon nanotechnology using chromatography, FTIR, and SEM instrumentation</li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <span class="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-600"></span>
+                    <h3 class="text-white font-bold">Student Intern — <span class="text-emerald-400">Balai Besar Keramik</span></h3>
+                    <p class="text-xs font-mono text-gray-500 mt-0.5">June 2016 — August 2016 · Bandung, West Java</p>
+                    <ul class="text-sm text-gray-300 leading-relaxed mt-2 space-y-1 list-disc list-inside">
+                        <li>Ceramics production, national standards for ceramics, and ceramics characterization</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800">
+                <div class="text-xs font-mono text-emerald-400 font-bold uppercase mb-1">Education</div>
+                <p class="text-sm text-gray-300">Telkom University — Bachelor's degree, Engineering Physics (Teknik Fisika), 2014 — 2019</p>
+            </div>
+        </section>
+
+        <!-- Publications -->
+        <section class="space-y-4 pt-8 border-t border-gray-900">
+            <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                <FiBookOpen className="text-cyan-400" />
+                <span>Research Publications</span>
+            </h2>
+            <p class="text-sm text-gray-400 leading-relaxed">
+                Atmospheric-science research from my Engineering Physics years at Telkom University, in the research group of Dr. Eng. Indra Chandra — low-cost sensors, nanosamplers, and air-quality monitoring in the Greater Bandung air basin. Full author record on <a href="https://garuda.kemdiktisaintek.go.id/author/view/408571" target="_blank" rel="noopener noreferrer" class="text-emerald-400 underline">Garuda (Garba Rujukan Digital)</a>.
+            </p>
+            <div class="space-y-4">
+                <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800">
+                    <p class="text-sm text-gray-200 leading-relaxed font-medium">Pemantauan Konsentrasi PM2.5 dan CO2 Berbasis Low-Cost Sensor secara Real-Time di Cekungan Udara Bandung Raya</p>
+                    <p class="text-xs text-gray-400 mt-1">Sya'bani, A., Chandra, I., <span class="text-gray-200 font-semibold">Majid, L. I.</span>, Vaicdan, F., &amp; Salam, R. A. — <span class="italic">Jurnal Teknologi Lingkungan</span>, 21(1), 9–15 (2020)</p>
+                    <a href="https://doi.org/10.29122/jtl.v21i1.3707" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-emerald-400 hover:text-emerald-300">doi.org/10.29122/jtl.v21i1.3707</a>
+                </div>
+                <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800">
+                    <p class="text-sm text-gray-200 leading-relaxed font-medium">Pemantauan Konsentrasi Gas (CO2, NO2) dan Partikulat (PM2.5) pada Struktur Horizontal di Kawasan Dayeuhkolot, Cekungan Udara Bandung Raya</p>
+                    <p class="text-xs text-gray-400 mt-1">Aziz, M. F., Abdurrachman, A., Chandra, I., <span class="text-gray-200 font-semibold">Majid, L. I.</span>, Vaicdan, F., &amp; Salam, R. A. — <span class="italic">Jurnal Sains Dirgantara</span>, 18(1) (2020), LAPAN</p>
+                    <a href="https://doi.org/10.30536/j.jsd.2020.v18.a3236" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-emerald-400 hover:text-emerald-300">doi.org/10.30536/j.jsd.2020.v18.a3236</a>
+                </div>
+                <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800">
+                    <p class="text-sm text-gray-200 leading-relaxed font-medium">Observasi Lapangan Mikropartikel di Atmosfer Menggunakan Nanosampler pada Cekungan Udara Bandung Raya</p>
+                    <p class="text-xs text-gray-400 mt-1"><span class="text-gray-200 font-semibold">Majid, L. I.</span>, Chandra, I., &amp; Utami, A. R. I. — <span class="italic">eProceedings of Engineering</span>, 6(1) (2019), Telkom University</p>
+                    <a href="https://garuda.kemdiktisaintek.go.id/author/view/408571" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-emerald-400 hover:text-emerald-300">garuda.kemdiktisaintek.go.id — author record</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="space-y-4 pt-8 border-t border-gray-900">
+            <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                <FiAward className="text-purple-400" />
+                <span>Certifications</span>
+            </h2>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-full text-xs font-mono bg-gray-900 text-gray-300 border border-gray-800">Industrial IoT Markets and Security</span>
+                <span class="px-3 py-1.5 rounded-full text-xs font-mono bg-gray-900 text-gray-300 border border-gray-800">Certified Blockchain Professional</span>
+                <span class="px-3 py-1.5 rounded-full text-xs font-mono bg-gray-900 text-gray-300 border border-gray-800">Quality Assurance Engineer Training</span>
+                <span class="px-3 py-1.5 rounded-full text-xs font-mono bg-gray-900 text-gray-300 border border-gray-800">Mass, Pressure &amp; Temperature Calibration</span>
+                <span class="px-3 py-1.5 rounded-full text-xs font-mono bg-gray-900 text-gray-300 border border-gray-800">Lean Six Sigma Foundations</span>
+                <span class="px-3 py-1.5 rounded-full text-xs font-mono bg-gray-900 text-gray-300 border border-gray-800">Quality Management Foundations</span>
+            </div>
+        </section>
+
         <!-- Current Focus ("Now") -->
         <section class="space-y-4 pt-8 border-t border-gray-900">
             <h2 class="text-xl font-bold text-white">
@@ -120,10 +263,11 @@ const profileSchema = {
             <div class="p-6 rounded-2xl bg-gray-900/40 border border-gray-800 space-y-3 text-xs sm:text-sm text-gray-300 leading-relaxed font-mono">
                 <p class="flex items-center space-x-2 text-emerald-400">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Hacking on ForgeADE: AI-first native developer workspace in Wails.</span>
+                    <span>Building SPBE e-government systems and the INAgov (SmartASN) app at Peruri.</span>
                 </p>
-                <p>• Refining MyAiRouter: Benchmarking ultra-low latency failovers in Go.</p>
-                <p>• Exploring multi-agent collaboration protocols and autonomous task delegation.</p>
+                <p>• Leading AI research and engineering at HasLab AI.</p>
+                <p>• Studying AI/ML systems deeply: training LLMs from scratch, GPU/TPU kernels (Triton, Pallas), and Python + Rust/C++ bindings.</p>
+                <p>• Writing a daily Indonesian tech blog and producing narrated explainer videos.</p>
             </div>
         </section>
 

@@ -40,6 +40,25 @@ export async function GET(context: any) {
 - Website: ${site}
 - About: ${site}/about
 - Services (jasa otomasi & AI, in Indonesian): ${site}/layanan
+- Current roles: Developer for SPBE (e-government systems) at Peruri — building the INAgov (SmartASN) mobile app in React Native; Chief Technology Officer & AI Researcher at HasLab AI
+
+## Experience summary
+
+- Peruri — SPBE Developer (Apr 2024 – present): software architecture, INAgov/SmartASN React Native app, Play Store & App Store releases
+- HasLab AI — CTO & AI Researcher (Aug 2023 – present)
+- Peruri — Blockchain Developer (Aug 2022 – Oct 2023): Hyperledger Fabric, Ethereum, Kaleido; CBDC and Blockchain-as-a-Service research
+- Peruri — Tech Lead Researchers (Apr 2022 – Oct 2023): Digital Seal project (Guardtime KSI Blockchain), Kotlin verification app
+- Peruri — IoT Developer & Researcher (Sep 2021 – Sep 2022): IoT Community of Practice lead, MERN IoT platform
+- Sinari Indonesia — Full-stack Developer (Dec 2020 – Mar 2021) and Electrical Engineer RnD (Feb 2020 – Dec 2020)
+- Internships: Indonesian Institute of Sciences (LIPI, 2017), Balai Besar Keramik (2016)
+
+## Research publications
+
+Atmospheric sensing research at Telkom University (research group of Dr. Eng. Indra Chandra). Author record: https://garuda.kemdiktisaintek.go.id/author/view/408571
+
+- "Pemantauan Konsentrasi PM2.5 dan CO2 Berbasis Low-Cost Sensor secara Real-Time di Cekungan Udara Bandung Raya" — Jurnal Teknologi Lingkungan 21(1), 2020 — https://doi.org/10.29122/jtl.v21i1.3707
+- "Pemantauan Konsentrasi Gas (CO2, NO2) dan Partikulat (PM2.5) pada Struktur Horizontal di Kawasan Dayeuhkolot, Cekungan Udara Bandung Raya" — Jurnal Sains Dirgantara 18(1), 2020 — https://doi.org/10.30536/j.jsd.2020.v18.a3236
+- "Observasi Lapangan Mikropartikel di Atmosfer Menggunakan Nanosampler pada Cekungan Udara Bandung Raya" — eProceedings of Engineering 6(1), 2019, Telkom University
 
 ## Official profiles
 
