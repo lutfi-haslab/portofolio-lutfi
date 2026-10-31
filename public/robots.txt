@@ -1,18 +1,19 @@
-# Robots.txt for Lutfi Ikbal Majid's Engineering Workspace
+# robots.txt for Lutfi Ikbal Majid — Engineering Workspace
 # https://lutfiikbalmajid.pages.dev
+# All search engines and AI agents are welcome to crawl and cite this site.
+# Machine-readable summary for AI agents: https://lutfiikbalmajid.pages.dev/llms.txt
 
 User-agent: *
 Allow: /
 Disallow: /admin/
 
-# Search Engine Crawlers (Google, Yahoo, Bing, DuckDuckGo, Yandex)
+# --- Search engine crawlers ---
 User-agent: Googlebot
 Allow: /
 Disallow: /admin/
 
 User-agent: Googlebot-Image
-Allow: /images/
-Allow: /assets-img/
+Allow: /
 
 User-agent: Bingbot
 Allow: /
@@ -34,23 +35,81 @@ User-agent: Baiduspider
 Allow: /
 Disallow: /admin/
 
-# AI Discovery & Search Crawlers (ChatGPT, Perplexity, Claude, Applebot)
+# --- AI search, discovery, and agent crawlers ---
+# OpenAI (ChatGPT search & browsing)
 User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: PerplexityBot
+# Anthropic (Claude)
+User-agent: ClaudeBot
 Allow: /
 
-User-agent: ClaudeBot
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (Gemini training/grounding opt-in)
+User-agent: Google-Extended
+Allow: /
+
+# Apple (Apple Intelligence & Siri)
 User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# Common Crawl (feeds many AI systems)
+User-agent: CCBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Mistral AI
+User-agent: MistralAI-User
+Allow: /
+
+# Others
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: DuckAssistBot
 Allow: /
 
 # Sitemaps

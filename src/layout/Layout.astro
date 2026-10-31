@@ -41,7 +41,7 @@ const defaultDescription =
 const metaDescription = description || defaultDescription;
 
 const defaultKeywords =
-    'Lutfi Ikbal Majid, Software Engineer, Systems Architect, Autonomous AI Agents, Multi-Agent Systems, Golang, Wails, React, TypeScript, Astro, Next.js, KendaliAI, ForgeADE, MyAiRouter, Timenotes, Indonesia Software Engineer';
+    'Lutfi Ikbal Majid, Software Engineer Indonesia, Systems Architect, Artificial Intelligence, Machine Learning, AI Agents, LLM, Python, Rust, Golang, TypeScript, React, Astro, Distributed Systems';
 
 const metaKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
 
@@ -57,7 +57,7 @@ if (ogImage) {
         absoluteOgImage = `${siteBaseUrl}${cleanPath}`;
     }
 } else {
-    absoluteOgImage = `${siteBaseUrl}/images/projects/kendaliai-dashboard.png`;
+    absoluteOgImage = `${siteBaseUrl}/og-default.jpg`;
 }
 
 // Base structured data: Person & WebSite
@@ -82,23 +82,40 @@ const basePersonSchema = {
     url: siteBaseUrl,
     image: 'https://avatars.githubusercontent.com/u/108409669?v=4',
     jobTitle: 'Senior Software Engineer & Systems Architect',
+    description:
+        'Lutfi Ikbal Majid is a Systems Architect and Software Developer based in Jakarta, Indonesia. He writes a daily Indonesian tech blog on AI, machine learning, and software systems, builds interactive AI labs, and offers automation and AI consulting services under the Haslab label.',
     worksFor: {
         '@type': 'Organization',
-        name: 'Independent Engineering',
+        name: 'Haslab',
+    },
+    alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Telkom University',
+    },
+    homeLocation: {
+        '@type': 'Place',
+        name: 'Jakarta, Indonesia',
     },
     sameAs: [
-        'https://github.com/Haslab-dev',
         'https://github.com/lutfi-haslab',
-        'https://linkedin.com/in/lutfiikbalmajid',
-        'https://twitter.com/haslab_dev',
+        'https://github.com/Haslab-dev',
+        'https://www.linkedin.com/in/lutfi-ikbal-majid-044184172',
+        'https://www.threads.com/@lutzfy.21',
+        'https://www.youtube.com/@lutfiikbalmajid',
+        'https://www.youtube.com/@diruanglutfi',
+        'https://www.youtube.com/@hasyachannel07',
+        'https://www.facebook.com/share/1CASq2E5M6/',
     ],
     knowsAbout: [
         'Software Architecture',
+        'Artificial Intelligence',
+        'Machine Learning',
         'Autonomous Multi-Agent AI Systems',
+        'LLM Systems',
+        'Python',
+        'Rust',
         'Golang High Performance Systems',
-        'Low-Latency AI Routing',
-        'React & React Native',
-        'Wails Desktop Engineering',
+        'TypeScript & React',
         'Distributed Systems',
     ],
 };
@@ -155,8 +172,8 @@ const combinedSchema = schema
         <meta property="og:locale" content="en_US" />
         <meta property="og:image" content={absoluteOgImage} />
         <meta property="og:image:secure_url" content={absoluteOgImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="2048" />
+        <meta property="og:image:height" content="1152" />
         <meta property="og:image:alt" content={fullTitle} />
 
         {/* Article Open Graph Specifics */}
@@ -175,8 +192,6 @@ const combinedSchema = schema
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@haslab_dev" />
-        <meta name="twitter:creator" content="@haslab_dev" />
         <meta name="twitter:title" content={fullTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={absoluteOgImage} />
@@ -184,6 +199,10 @@ const combinedSchema = schema
 
         <!-- Canonical & Feeds -->
         <link rel="canonical" href={canonicalURL} />
+        <link rel="me" href="https://github.com/lutfi-haslab" />
+        <link rel="me" href="https://www.linkedin.com/in/lutfi-ikbal-majid-044184172" />
+        <link rel="me" href="https://www.threads.com/@lutzfy.21" />
+        <link rel="me" href="https://www.youtube.com/@lutfiikbalmajid" />
         <link rel="alternate" type="application/rss+xml" title="Lutfi Ikbal Majid — RSS Feed" href={`${siteBaseUrl}/rss.xml`} />
         <link rel="sitemap" type="application/xml" title="Sitemap" href={`${siteBaseUrl}/sitemap-index.xml`} />
 

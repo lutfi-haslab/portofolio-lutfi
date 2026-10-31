@@ -59,7 +59,7 @@ const siteBaseUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'htt
 const postUrl = `${siteBaseUrl}/blog/${post.id}`;
 const fullImageUrl = heroImage
     ? (heroImage.startsWith('http') ? heroImage : `${siteBaseUrl}${heroImage}`)
-    : `${siteBaseUrl}/images/projects/kendaliai-dashboard.png`;
+    : `${siteBaseUrl}/og-default.jpg`;
 
 const isoDate = post.data.date ? new Date(post.data.date).toISOString() : new Date().toISOString();
 
@@ -73,19 +73,10 @@ const articleSchema = {
     datePublished: isoDate,
     dateModified: isoDate,
     author: {
-        '@type': 'Person',
-        name: 'Lutfi Ikbal Majid',
-        url: `${siteBaseUrl}/about`,
-        sameAs: ['https://github.com/Haslab-dev', 'https://linkedin.com/in/lutfiikbalmajid'],
+        '@id': `${siteBaseUrl}/#person`,
     },
     publisher: {
-        '@type': 'Person',
-        name: 'Lutfi Ikbal Majid',
-        url: siteBaseUrl,
-        logo: {
-            '@type': 'ImageObject',
-            url: `${siteBaseUrl}/favicon.svg`,
-        },
+        '@id': `${siteBaseUrl}/#person`,
     },
     mainEntityOfPage: {
         '@type': 'WebPage',

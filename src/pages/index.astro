@@ -1,6 +1,7 @@
 ---
 import Layout from '../layout/Layout.astro';
 import { myProjects } from '../data/my-projects';
+import { aiLabsShowcases } from '../data/ai-labs';
 import { getCollection } from 'astro:content';
 import { 
     FiArrowRight, 
@@ -20,8 +21,7 @@ const sortedWritings = allWritings
     });
 ---
 
-<Layout 
-    title="Systems Architect & Software Developer"
+<Layout
     description="Interactive engineering workspace of Lutfi Ikbal Majid. Specialized in Autonomous AI Multi-Agent Systems, High-Performance Go Gateways, React Native, Wails, and Distributed Architecture."
     keywords="Lutfi Ikbal Majid, Software Engineer Indonesia, Systems Architect, AI Developer, Go Developer, React Native Engineer, Wails, Multi-Agent AI"
 >
@@ -180,7 +180,7 @@ const sortedWritings = allWritings
                     href="/labs"
                     class="text-xs font-mono text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 font-semibold"
                 >
-                    <span>Explore all 4 AI Labs</span>
+                    <span>Explore all {aiLabsShowcases.length} AI Labs</span>
                     <FiArrowRight />
                 </a>
             </div>
