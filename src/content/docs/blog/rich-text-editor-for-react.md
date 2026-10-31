@@ -12,6 +12,9 @@ tags:
     - nextjs
 authors:
     - lutfi
+cover:
+    image: /assets-img/banner-rich-text-editor-for-react.jpg
+    alt: Banner informatif Rich Text Editor for React or NextJS with S3 Image Upload
 ---
 
 !["quill rich text editor"](https://miro.medium.com/v2/resize:fit:1400/1*KxknuOmsXhpCXIlcjV45MA.png)

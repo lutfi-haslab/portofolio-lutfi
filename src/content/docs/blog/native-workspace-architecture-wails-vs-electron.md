@@ -9,8 +9,8 @@ tags:
     - Desktop
     - Go
 cover:
-    image: /assets-img/forgeade.jpg
-    alt: ForgeADE Workspace
+    image: /assets-img/banner-native-workspace-wails-vs-electron.jpg
+    alt: Banner informatif Why We Chose Wails and Go Over Electron — perbandingan pemakaian memori
 ---
 
 When designing **ForgeADE** — an AI-first software engineering workspace — one of the most critical decisions was selecting the desktop foundation. Modern software engineers already suffer from heavy development environments where editors, language servers, and containers consume massive system resources.

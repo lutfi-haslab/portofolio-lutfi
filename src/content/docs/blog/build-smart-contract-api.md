@@ -9,6 +9,9 @@ tags:
     - solidity
 authors:
     - lutfi
+cover:
+    image: /assets-img/banner-build-smart-contract-api.jpg
+    alt: Banner informatif Build Smart Contract REST API — Solidity, Ganache, dan MetaMask
 ---
 
 Blockchain and smart contracts are two of the most innovative technologies of the 21st century, and have the potential to revolutionize a wide range of industries, from finance and healthcare to supply chain management and real estate.

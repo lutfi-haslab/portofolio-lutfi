@@ -11,8 +11,8 @@ tags:
     - Architecture
     - Web
 cover:
-    image: https://cdn.buttercms.com/xrVbfdR5TBy4iTaY4xl7
-    alt: Astro Web Framework
+    image: /assets-img/banner-introduction-to-astro.jpg
+    alt: Banner informatif Introduction to Astro — empat konsep inti dan arsitektur Islands
 ---
 
 # 🌌 Introduction to Astro

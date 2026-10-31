@@ -12,8 +12,8 @@ tags:
     - AI
     - Coding
 cover:
-    image: ../../../assets/images/Vibe_Coding_Tools.png
-    alt: 'Vibe Coding src: Dezdok'
+    image: /assets-img/banner-vibe-coding.jpg
+    alt: Banner informatif Vibe Coding — alur kerja lima langkah dari prompt menjadi kode
 ---
 
 The software development landscape is experiencing a seismic shift in 2025, and it has a name: **vibe coding**. This revolutionary approach to programming is changing how we think about software development, making it more accessible while sparking intense debates about the future of coding itself.

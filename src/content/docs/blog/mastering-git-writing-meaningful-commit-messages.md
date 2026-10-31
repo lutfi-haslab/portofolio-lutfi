@@ -7,6 +7,9 @@ description: When working on software projects — especially collaborative ones
 date: 2025-06-18T10:20:00.000Z
 authors:
     - lutfi
+cover:
+    image: /assets-img/banner-mastering-git-commit-messages.jpg
+    alt: Banner informatif Mastering Git — Writing Meaningful Commit Messages
 ---
 
 In this article, we’ll explore why good commit messages matter and how you can follow best practices, including the popular **conventional commit style** (e.g., `feat:`, `fix:`).

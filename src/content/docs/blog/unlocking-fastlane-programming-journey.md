@@ -9,6 +9,9 @@ tags:
     - blog
 authors:
     - lutfi
+cover:
+    image: /assets-img/banner-unlocking-fastlane-programming.jpg
+    alt: Banner informatif Unlocking the Fast Lane — Accelerate Your Programming Journey
 ---
 
 !["learn programming"](https://static1.smartbear.co/smartbearbrand/media/images/blog/what%E2%80%99s-the-best-programming-language-to-learn-first.png?ext=.png)

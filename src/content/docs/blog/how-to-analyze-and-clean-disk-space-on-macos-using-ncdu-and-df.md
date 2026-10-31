@@ -7,6 +7,9 @@ description: Keeping your macOS system clean and your disk space under control
 date: 2025-06-16T09:45:00.000Z
 authors:
     - lutfi
+cover:
+    image: /assets-img/banner-macos-disk-space-ncdu-df.jpg
+    alt: Banner informatif Analyze and Clean Disk Space on macOS Using ncdu and df
 ---
 
 ````markdown

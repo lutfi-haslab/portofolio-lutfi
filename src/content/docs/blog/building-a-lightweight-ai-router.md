@@ -10,8 +10,8 @@ tags:
     - Go
     - Performance
 cover:
-    image: /assets-img/myairouter.jpg
-    alt: MyAiRouter Architecture
+    image: /assets-img/banner-building-a-lightweight-ai-router.jpg
+    alt: Banner informatif Designing an Ultra-Low Footprint AI Gateway in Go
 ---
 
 In modern AI engineering pipelines, routing requests across disparate model providers (OpenAI, Anthropic Claude, Google Gemini, and local Ollama instances) introduces significant architectural challenges. Many off-the-shelf gateways run on heavy runtime stacks that consume hundreds of megabytes of RAM and introduce noticeable request latency.

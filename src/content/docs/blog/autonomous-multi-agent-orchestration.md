@@ -9,8 +9,8 @@ tags:
     - Agents
     - TypeScript
 cover:
-    image: /assets-img/kendaliai-dashboard.png
-    alt: KendaliAI Control Center
+    image: /assets-img/banner-autonomous-multi-agent-orchestration.jpg
+    alt: Banner informatif Designing Autonomous Multi-Agent Orchestration with Live Telemetry
 ---
 
 As large language models evolve from simple chat completions into autonomous execution engines, monolithic prompts quickly fail on complex, real-world development tasks. Building reliable multi-agent workflows requires structured decomposition, discrete role personas, and strict sandbox safety guards.

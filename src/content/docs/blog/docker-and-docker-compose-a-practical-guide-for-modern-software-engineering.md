@@ -9,6 +9,9 @@ authors:
 tags:
     - Architecture
     - DevOps
+cover:
+    image: /assets-img/banner-docker-and-docker-compose.jpg
+    alt: Banner informatif Docker and Docker Compose — satu file YAML untuk seluruh stack
 ---
 
 ## Overview

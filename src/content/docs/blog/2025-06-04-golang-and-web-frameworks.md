@@ -10,8 +10,8 @@ tags:
     - Go
     - Backend
 cover:
-    image: ../../../assets/images/what-is-golang.png
-    alt: what-is-golang
+    image: /assets-img/banner-golang-and-web-frameworks.jpg
+    alt: Banner informatif Golang and Web Frameworks — perbandingan framework Gin dan Fiber
 ---
 
 In the modern world of web development, choosing the right programming language and framework is crucial for building scalable, efficient, and maintainable applications. **Golang (Go)** has emerged as a powerful player in this space due to its simplicity, concurrency model, and performance characteristics. When combined with lightweight frameworks like **Gin** and **Fiber**, Go becomes an excellent choice for building high-performance web services.
