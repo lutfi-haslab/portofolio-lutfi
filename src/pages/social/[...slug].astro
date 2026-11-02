@@ -87,7 +87,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('id-ID', {
 
                 {post.data.pair && (
                     <p class="mt-4 text-sm">
-                        <a href={`/social/${post.data.pair}/`} class="text-sky-400 hover:underline">
+                        <a href={`/social/${post.data.pair}/?lang=${(post.data.lang || 'id') === 'en' ? 'id' : 'en'}`} class="text-sky-400 hover:underline">
                             {(post.data.lang || 'id') === 'en' ? '🌐 Baca dalam Bahasa Indonesia' : '🌐 Read in English'}
                         </a>
                     </p>

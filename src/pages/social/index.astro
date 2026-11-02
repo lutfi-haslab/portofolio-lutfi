@@ -136,6 +136,12 @@ const fmtDate = (d: Date) =>
                 });
             });
         });
+        // Follow the visitor's language (geo/cookie, set by the middleware):
+        // a non-Indonesian visitor lands on the English filter by default.
+        if (/(?:^|; )lang=en(?:;|$)/.test(document.cookie)) {
+            const enChip = document.querySelector('.lang-filter[data-filter="en"]');
+            if (enChip) enChip.click();
+        }
         document.querySelectorAll('.share-btn').forEach((btn) => {
             btn.addEventListener('click', async () => {
                 const url = btn.getAttribute('data-url') || '';
