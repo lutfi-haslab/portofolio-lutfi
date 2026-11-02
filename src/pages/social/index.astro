@@ -51,7 +51,7 @@ const fmtDate = (d: Date) =>
                 const shareText = encodeURIComponent(post.data.title);
                 const shareUrl = encodeURIComponent(url);
                 return (
-                    <article class="rounded-2xl border border-gray-800 bg-gray-900/60 p-5 hover:border-gray-700 transition-colors">
+                    <article class="rounded-2xl border border-gray-800 bg-gray-900/60 p-5 hover:border-gray-700 transition-colors overflow-hidden">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-gray-950 font-bold shrink-0">L</div>
                             <div class="min-w-0">
@@ -82,12 +82,12 @@ const fmtDate = (d: Date) =>
                             </div>
                         )}
 
-                        <div class="mt-4 pt-3 border-t border-gray-800 flex items-center gap-4 text-sm text-gray-400">
+                        <div class="mt-4 pt-3 border-t border-gray-800 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-400">
                             <a href={`/social/${post.id}/`} class="inline-flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
                                 <FiLink2 className="w-4 h-4" /> Permalink
                             </a>
                             <a href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`} target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
-                                <FiShare2 className="w-4 h-4" /> Bagikan ke X
+                                <FiShare2 className="w-4 h-4" /> Bagikan
                             </a>
                             <a href={`https://wa.me/?text=${shareText}%20${shareUrl}`} target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
                                 <FiShare2 className="w-4 h-4" /> WhatsApp
