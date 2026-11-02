@@ -89,6 +89,32 @@ Sumber update ini:
 - Reuters, "Binance resumes bitcoin withdrawals after covering bulk of stolen $6.3 billion" — https://www.reuters.com/legal/government/binance-resumes-bitcoin-withdrawals-after-covering-bulk-stolen-63-billion-2026-11-01/
 - CoinDesk, "Binance begins phased withdrawals starting with bitcoin" — https://www.coindesk.com/markets/2026/11/01/binance-opens-crypto-withdrawals-in-phases-starting-with-bitcoin-following-usd6-3-billion-hack
 
+## Update Senin, 2 November 2026 — Proof of Reserves
+
+Nah, hari Senin yang dijanjikan itu sudah tiba, dan vonisnya ternyata setengah-setengah. Bukan gagal total, tapi juga bukan bukti penuh yang dijanjikan.
+
+Klaim awal Binance, lewat co-CEO Richard Teng pada 30 Oktober: laporan Proof of Reserves penuh terbit Senin, 2 November. Bukti di lapangan: yang terbit pada Senin ini baru angka snapshot-nya, bukan bukti yang bisa diverifikasi sendiri oleh pengguna. Snapshot baru itu diambil 31 Oktober pukul 00:00 UTC, dan sudah tampil di halaman Proof of Reserves Binance. Tapi bukti zero-knowledge-nya — bagian yang memungkinkan tiap pengguna memeriksa sendiri apakah saldonya ikut dihitung — baru diperkirakan selesai Selasa, 3 November, karena komputasinya memakan 40–50 jam. Jadi janji "Senin" molor sehari untuk bagian yang paling penting. Itu fakta kemoloran, bukan kegagalan cek: angkanya ada, verifikasinya tertunda.
+
+Lalu bagaimana angkanya? Untuk sepuluh aset utama, Binance mengklaim semuanya kembali ≥100%, dan sejauh yang bisa dibaca dari snapshot 31 Oktober, klaim itu bertahan — dengan margin yang, terus terang, tipis sekali di beberapa aset.
+
+Bitcoin tercatat 100,04%, dengan saldo pengguna 692.187 BTC, naik 0,52% dibanding 1 Oktober. BNB 101,30%. USDT tepat 100,00%, turun dari 103,88% pada 1 Oktober — bantalan cadangannya habis terkikis, tapi tidak jebol. Dan Ether, aset yang paling kutunggu karena di sinilah ujian artikel ini berada: dompet Binance memegang 3.654.922 ETH berbanding 3.654.919 ETH yang menjadi hak pengguna. Selisihnya kurang dari tiga koin. Artinya rasio ETH yang pada 1 Oktober tepat 100%, lalu menurut perkiraan CoinDesk sempat jatuh ke sekitar 94% begitu ±204.500 ETH dicuri, kini kembali ke sekitar 100% — bukan karena lubangnya tidak pernah ada, melainkan karena Binance menutupnya kembali dengan dana perusahaan.
+
+Soal dompet "Binance 14" sendiri, aku harus jujur soal batas apa yang bisa kupastikan. Yang terkonfirmasi: dompet itu tercantum di PoR 1 Oktober sebagai penopang saldo pengguna, dan pada Minggu Binance memperbarui daftar dompet PoR-nya serta menyatakan semua penarikan berikutnya hanya lewat dompet-dompet baru itu. Apakah nama Binance 14 masih tercantum atau sudah dicoret dari daftar baru, tidak bisa kupastikan dari sumber-sumber yang kubaca hari ini — jadi aku tidak akan mengklaim salah satunya. Yang jelas, ceritanya bergeser: dompet lama yang dikuras bukan lagi jalur penarikan.
+
+Penjelasan resmi atas kekurangan yang tersisa juga sudah bergeser bentuknya. Bukan lagi "ada lubang di sepuluh aset utama", melainkan: penggantian sudah mencapai sekitar 95% dari total curian, dan sisa 5% adalah token-token di luar sepuluh besar yang kurang likuid sehingga masih dibeli lewat pasar dan OTC. Konsekuensinya, snapshot kali ini juga menyempit: hanya 10 aset, dibanding 55 aset pada snapshot 1 Oktober. Jadi bukti ini menutup pertanyaan untuk BTC, ETH, USDT, dan kawan-kawan — tapi belum menjawab apa-apa soal token-token kecil di luar daftar itu.
+
+Satu penutup dari sisi penarikan, karena Minggu lalu masih menyisakan pertanyaan apakah arus keluar akan jadi eksodus: tidak. Reuters melaporkan pada 2 November bahwa dari $4,649 miliar penarikan dan $1,01 miliar setoran pada 1 November, arus keluar bersihnya $3,64 miliar — sekitar 2,1% dari total aset $171 miliar menurut data PoR 28 Oktober — dan arus itu sudah melambat serta menstabilkan diri setelah lonjakan awal. Kepala kebijakan TRM Labs menyebutnya reaksi berjaga-jaga, bukan capital flight. Itu konsisten dengan apa yang kulihat: pengguna menguji pintunya, bukan membakar gedungnya.
+
+Jadi vonis Senin ini: klaim "sepuluh aset utama kembali 100%" lolos dari snapshot, tapi dengan margin setipis tiga koin Ether dan satu hari keterlambatan untuk bukti zero-knowledge-nya. Sampai bukti itu terbit Selasa dan bisa diperiksa sendiri, statusnya tetap "klaim Binance yang angkanya cocok, verifikasinya tertunda". Dan dengan update ini, rangkaian follow-up Binance di blog ini selesai.
+
+Sumber update ini:
+
+- Binance, halaman Proof of Reserves — https://www.binance.com/en/proof-of-reserves
+- Crypto.news, "Binance USDT reserves drop 7.95% as report narrows to 10 assets" — https://crypto.news/binance-usdt-holdings-fall-proof-of-reserves-october-2026/
+- Tech-ish, "FBI says North Korea stole more than USD 6 billion from Binance as withdrawals start to reopen" — https://tech-ish.com/2026/11/01/binance-hack-6-3-billion-withdrawals-proof/
+- Reuters, "Binance sees outflows stabilising as exchange returns online after $6.3 billion heist" — https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/
+- CryptoCompass, "$6.34 Billion Buffer: Binance Promises a Full Proof of Reserves by Monday" (pembaruan 1 November: bukti penuh bergeser ke 3 November) — https://cryptocompass.com/articles/6-34-billion-buffer-binance-promises-a-full-proof-of-reserves-by-monday
+
 ## Sumber
 
 Berita dan laporan utama:
