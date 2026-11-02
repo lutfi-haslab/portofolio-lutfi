@@ -85,6 +85,17 @@ const articleSchema = {
     keywords: (post.data.tags || []).join(', '),
 };
 
+const pairAlternates = post.data.pair
+    ? [
+          { hreflang: 'id', href: postUrl },
+          { hreflang: 'en', href: `${siteBaseUrl}/en/blog/${post.data.pair}` },
+          { hreflang: 'x-default', href: postUrl },
+      ]
+    : [
+          { hreflang: 'id', href: postUrl },
+          { hreflang: 'x-default', href: postUrl },
+      ];
+
 const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -119,6 +130,8 @@ const breadcrumbSchema = {
     publishedTime={isoDate}
     tags={post.data.tags || []}
     schema={[articleSchema, breadcrumbSchema]}
+    lang="id"
+    alternates={pairAlternates}
 >
     <article class="container mx-auto px-6 py-12 max-w-3xl font-sans">
         

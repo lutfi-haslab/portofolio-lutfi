@@ -31,6 +31,15 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('id-ID', {
     description={post.data.description || post.data.title}
     keywords={(post.data.tags || []).join(', ')}
     ogType="article"
+    lang={post.data.lang || 'id'}
+    alternates={post.data.pair ? [
+        { hreflang: post.data.lang || 'id', href: url },
+        { hreflang: (post.data.lang || 'id') === 'en' ? 'id' : 'en', href: `${siteBase}/social/${post.data.pair}/` },
+        { hreflang: 'x-default', href: (post.data.lang || 'id') === 'en' ? `${siteBase}/social/${post.data.pair}/` : url },
+    ] : [
+        { hreflang: post.data.lang || 'id', href: url },
+        { hreflang: 'x-default', href: url },
+    ]}
 >
     <div class="mx-auto w-full max-w-xl px-4 sm:px-6 font-sans">
         <a href="/social/" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors mt-6 mb-2">

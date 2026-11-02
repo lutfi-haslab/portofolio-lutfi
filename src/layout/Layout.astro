@@ -14,6 +14,8 @@ interface Props {
     modifiedTime?: string;
     tags?: string[];
     schema?: Record<string, any> | Array<Record<string, any>>;
+    lang?: 'id' | 'en';
+    alternates?: { hreflang: string; href: string }[];
 }
 
 const {
@@ -26,6 +28,8 @@ const {
     modifiedTime,
     tags = [],
     schema,
+    lang = 'en',
+    alternates = [],
 } = Astro.props;
 
 const siteName = "Lutfi Ikbal Majid — Engineering Workspace";
@@ -128,7 +132,7 @@ const combinedSchema = schema
 ---
 
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
+<html lang={lang} class="dark scroll-smooth">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -169,7 +173,7 @@ const combinedSchema = schema
         <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={metaDescription} />
-        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale" content={lang === 'id' ? 'id_ID' : 'en_US'} />
         <meta property="og:image" content={absoluteOgImage} />
         <meta property="og:image:secure_url" content={absoluteOgImage} />
         <meta property="og:image:width" content="2048" />
@@ -199,6 +203,9 @@ const combinedSchema = schema
 
         <!-- Canonical & Feeds -->
         <link rel="canonical" href={canonicalURL} />
+        {alternates.map((alt) => (
+            <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+        ))}
         <link rel="me" href="https://github.com/lutfi-haslab" />
         <link rel="me" href="https://www.linkedin.com/in/lutfi-ikbal-majid-044184172" />
         <link rel="me" href="https://www.threads.com/@lutzfy.21" />
