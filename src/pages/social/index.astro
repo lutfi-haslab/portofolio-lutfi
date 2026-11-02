@@ -44,17 +44,16 @@ const fmtDate = (d: Date) =>
 
         {/* Timeline */}
         <div>
-            {rendered.map(({ post, Content }, i) => {
+            {rendered.map(({ post, Content }) => {
                 const url = `${siteBase}/social/${post.id}/`;
                 const shareText = encodeURIComponent(`${post.data.title} — via @lutzfy`);
                 const shareUrl = encodeURIComponent(url);
-                const isLast = i === rendered.length - 1;
+                
                 return (
                     <article class="relative flex gap-3 py-5 border-b border-gray-800">
-                        {/* avatar + thread line */}
-                        <div class="flex flex-col items-center shrink-0">
+                        {/* avatar */}
+                        <div class="shrink-0">
                             <div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-gray-950 text-sm font-bold">L</div>
-                            {!isLast && <div class="w-px flex-1 bg-gray-800 mt-2"></div>}
                         </div>
 
                         <div class="min-w-0 flex-1">
