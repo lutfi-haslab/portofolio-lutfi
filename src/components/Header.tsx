@@ -57,6 +57,12 @@ const Header: React.FC = () => {
                         Writings
                     </a>
                     <a
+                        href="/social"
+                        className="text-gray-300 hover:text-emerald-400 transition-colors"
+                    >
+                        Social
+                    </a>
+                    <a
                         href="/about"
                         className="text-gray-300 hover:text-white transition-colors"
                     >
@@ -141,6 +147,13 @@ const Header: React.FC = () => {
                         onClick={() => setMobileOpen(false)}
                     >
                         → Writings
+                    </a>
+                    <a
+                        href="/social"
+                        className="block text-emerald-400 hover:text-emerald-300 py-1"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        → Social
                     </a>
                     <a
                         href="/about"
