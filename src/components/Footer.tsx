@@ -5,14 +5,14 @@ export const Footer: React.FC = () => {
     return (
         <footer className="border-t border-gray-900 bg-gray-950 py-12 text-gray-400 font-sans text-xs">
             <div className="container mx-auto px-6 max-w-5xl flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
+                <div className="flex items-center justify-center space-x-3 text-center">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></div>
                     <span className="font-mono text-gray-300">
                         Lutfi Ikbal Majid — Software Developer & Systems Builder
                     </span>
                 </div>
 
-                <div className="flex items-center space-x-6 font-mono text-gray-400">
+                <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-mono text-gray-400">
                     <a href="/project" className="hover:text-white transition-colors">Projects</a>
                     <a href="/layanan" className="hover:text-emerald-400 transition-colors">Layanan</a>
                     <a href="/labs" className="hover:text-emerald-400 transition-colors">AI Labs</a>
