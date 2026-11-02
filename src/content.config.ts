@@ -16,6 +16,8 @@ export const collections = {
                     alt: z.string().optional(),
                 })
                 .optional(),
+            lang: z.enum(['id', 'en']).optional(),
+            pair: z.string().optional(),
         }),
     }),
     social: defineCollection({
@@ -26,6 +28,8 @@ export const collections = {
             date: z.coerce.date(),
             tags: z.array(z.string()).optional(),
             source: z.string().optional(),
+            lang: z.enum(['id', 'en']).optional(),
+            pair: z.string().optional(),
         }),
     }),
     projects: defineCollection({

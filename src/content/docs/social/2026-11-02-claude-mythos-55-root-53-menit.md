@@ -6,6 +6,8 @@ tags:
   - AI
   - Anthropic
   - Keamanan Siber
+lang: id
+pair: 2026-11-02-en-claude-mythos-55-root-53-minutes
 source: "KuCoin/AIBase & ChainCatcher, 2 November 2026"
 ---
 

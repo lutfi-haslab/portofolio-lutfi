@@ -6,6 +6,8 @@ tags:
   - AI
   - OpenAI
   - Anthropic
+lang: id
+pair: 2026-11-02-en-gpt-62-astra-claude-55-leaked
 source: "KuCoin/AIBase & ChainCatcher, 2 November 2026"
 ---
 

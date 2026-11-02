@@ -6,6 +6,8 @@ tags:
   - AI
   - Distilasi
   - DeepSeek
+lang: id
+pair: 2026-11-02-en-ai-distillation-50x-price-gap
 source: "Tech Insider/FourWeekMBA, 2 November 2026"
 ---
 

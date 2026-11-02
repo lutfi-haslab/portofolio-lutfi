@@ -11,7 +11,7 @@ import {
 import { NeuralSynapseCanvas } from '../components/labs/NeuralSynapseCanvas';
 
 // Fetch all writing articles (including technical guides)
-const allWritings = await getCollection('blog');
+const allWritings = (await getCollection('blog')).filter((p) => (p.data.lang || 'id') === 'id');
 const sortedWritings = allWritings
     .filter((b) => b.id !== 'index')
     .sort((a, b) => {

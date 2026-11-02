@@ -42,6 +42,13 @@ const fmtDate = (d: Date) =>
             </a>
         </header>
 
+        {/* Language filter */}
+        <div class="flex items-center gap-2 py-4 border-b border-gray-800">
+            <button class="lang-filter rounded-full px-4 py-1.5 text-sm font-medium bg-white text-gray-950 cursor-pointer" data-filter="all">Semua</button>
+            <button class="lang-filter rounded-full px-4 py-1.5 text-sm font-medium border border-gray-700 text-gray-300 cursor-pointer" data-filter="id">Indonesia</button>
+            <button class="lang-filter rounded-full px-4 py-1.5 text-sm font-medium border border-gray-700 text-gray-300 cursor-pointer" data-filter="en">English</button>
+        </div>
+
         {/* Timeline */}
         <div>
             {rendered.map(({ post, Content }) => {
@@ -50,7 +57,7 @@ const fmtDate = (d: Date) =>
                 const shareUrl = encodeURIComponent(url);
                 
                 return (
-                    <article class="relative flex gap-3 py-5 border-b border-gray-800">
+                    <article class="relative flex gap-3 py-5 border-b border-gray-800" data-lang={post.data.lang || 'id'}>
                         {/* avatar */}
                         <div class="shrink-0">
                             <div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-gray-950 text-sm font-bold">L</div>
@@ -60,7 +67,7 @@ const fmtDate = (d: Date) =>
                             {/* header row */}
                             <div class="flex items-baseline gap-2">
                                 <span class="font-semibold text-white text-[15px] whitespace-nowrap shrink-0">Lutfi Ikbal Majid</span>
-                                <span class="text-sm text-gray-500 truncate min-w-0">@lutzfy · {fmtDate(post.data.date)}</span>
+                                <span class="text-sm text-gray-500 truncate min-w-0">@lutzfy · {fmtDate(post.data.date)}{(post.data.lang || 'id') === 'en' ? ' · EN' : ''}</span>
                                 <a href={`/social/${post.id}/`} aria-label="Permalink" class="ml-auto text-gray-500 hover:text-gray-300 px-1">···</a>
                             </div>
 
@@ -73,7 +80,7 @@ const fmtDate = (d: Date) =>
                             </div>
 
                             {post.data.source && (
-                                <p class="mt-2 text-[13px] text-gray-500">Sumber: {post.data.source}</p>
+                                <p class="mt-2 text-[13px] text-gray-500">{(post.data.lang || 'id') === 'en' ? 'Source' : 'Sumber'}: {post.data.source}</p>
                             )}
 
                             {(post.data.tags || []).length > 0 && (
@@ -110,6 +117,23 @@ const fmtDate = (d: Date) =>
         document.querySelectorAll('.like-btn').forEach((btn) => {
             btn.addEventListener('click', () => {
                 btn.classList.toggle('text-rose-500');
+            });
+        });
+        const chips = document.querySelectorAll('.lang-filter');
+        const articles = document.querySelectorAll('article[data-lang]');
+        chips.forEach((chip) => {
+            chip.addEventListener('click', () => {
+                const f = chip.getAttribute('data-filter');
+                chips.forEach((c) => {
+                    c.classList.remove('bg-white', 'text-gray-950');
+                    c.classList.add('border', 'border-gray-700', 'text-gray-300');
+                });
+                chip.classList.add('bg-white', 'text-gray-950');
+                chip.classList.remove('border', 'border-gray-700', 'text-gray-300');
+                articles.forEach((a) => {
+                    const show = f === 'all' || a.getAttribute('data-lang') === f;
+                    a.style.display = show ? '' : 'none';
+                });
             });
         });
         document.querySelectorAll('.share-btn').forEach((btn) => {

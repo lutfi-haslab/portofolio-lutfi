@@ -54,7 +54,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('id-ID', {
                 </div>
 
                 {post.data.source && (
-                    <p class="mt-2 text-[13px] text-gray-500">Sumber: {post.data.source}</p>
+                    <p class="mt-2 text-[13px] text-gray-500">{(post.data.lang || 'id') === 'en' ? 'Source' : 'Sumber'}: {post.data.source}</p>
                 )}
 
                 {(post.data.tags || []).length > 0 && (
@@ -76,6 +76,14 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('id-ID', {
                         <FiShare2 className="w-5 h-5" />
                     </button>
                 </div>
+
+                {post.data.pair && (
+                    <p class="mt-4 text-sm">
+                        <a href={`/social/${post.data.pair}/`} class="text-sky-400 hover:underline">
+                            {(post.data.lang || 'id') === 'en' ? '🌐 Baca dalam Bahasa Indonesia' : '🌐 Read in English'}
+                        </a>
+                    </p>
+                )}
 
                 <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-400">
                     <a href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`} target="_blank" rel="noopener" class="hover:text-white transition-colors">Bagikan ke X</a>

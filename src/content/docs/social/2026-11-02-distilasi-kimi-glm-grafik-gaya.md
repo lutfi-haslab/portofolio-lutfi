@@ -6,6 +6,8 @@ tags:
   - AI
   - Distilasi
   - Kimi
+lang: id
+pair: 2026-11-02-en-distillation-kimi-glm-personality-charts
 source: "Tech Insider/Wccftech, 31 Oktober–2 November 2026"
 ---
 

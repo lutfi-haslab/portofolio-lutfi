@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
 export async function GET(context: any) {
-    const blog = (await getCollection('blog')).filter((post) => post.id !== 'index');
+    const blog = (await getCollection('blog')).filter((post) => post.id !== 'index' && ((post.data as any).lang || 'id') === 'id');
     return rss({
         title: "Lutfi Ikbal Majid — Engineering Workspace",
         description: 'Engineering notes, systems architectures, and technical deep dives by Lutfi Ikbal Majid.',
