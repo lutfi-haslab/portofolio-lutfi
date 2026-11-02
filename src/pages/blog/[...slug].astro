@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layout/Layout.astro';
+import PageStats from '../../components/PageStats.astro';
 import { getPostImage, getReadingTime } from '../../utils/blogHelper';
 import { 
     FiArrowLeft, 
@@ -204,6 +205,7 @@ const breadcrumbSchema = {
 
                 {/* Top Action Icons */}
                 <div class="flex items-center space-x-3 text-gray-400">
+                    <PageStats />
                     <button class="p-2 rounded-lg hover:bg-gray-900 hover:text-white transition-colors cursor-pointer" title="Bookmark">
                         <FiBookmark className="w-4 h-4" />
                     </button>

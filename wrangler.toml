@@ -1,0 +1,8 @@
+name = "lutfiikbalmajid"
+compatibility_date = "2026-11-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portofolio-db"
+database_id = "7c946780-1950-4f67-948c-c286c0c05c69"

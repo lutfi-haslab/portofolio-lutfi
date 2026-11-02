@@ -1,0 +1,128 @@
+---
+// View counter + like button, powered by the D1-backed /api endpoints
+// (Pages Functions in functions/api/). Rendered statically; the numbers
+// are filled in progressively by the script below, so the page HTML and
+// SEO are unaffected when JS or the API is unavailable.
+---
+
+<div class="page-stats" data-page-stats>
+    <span class="ps-item" title="Kali dilihat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span data-views>–</span>
+    </span>
+    <button type="button" class="ps-like" data-like aria-pressed="false" title="Suka artikel ini">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span data-likes>–</span>
+    </button>
+</div>
+
+<style>
+    .page-stats {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        color: #9ca3af;
+        font-size: 0.875rem;
+    }
+    .page-stats .ps-item,
+    .page-stats .ps-like {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+    }
+    .page-stats svg {
+        width: 1.05rem;
+        height: 1.05rem;
+    }
+    .page-stats .ps-like {
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0.25rem;
+        margin: -0.25rem;
+        color: inherit;
+        font: inherit;
+        border-radius: 0.5rem;
+        transition: color 0.15s ease;
+    }
+    .page-stats .ps-like:hover {
+        color: #fb7185;
+    }
+    .page-stats .ps-like.liked {
+        color: #fb7185;
+    }
+    .page-stats .ps-like.liked svg {
+        fill: #fb7185;
+    }
+    .page-stats .ps-like:disabled {
+        opacity: 0.5;
+        cursor: wait;
+    }
+</style>
+
+<script>
+    const root = document.querySelector('[data-page-stats]');
+    if (root) {
+        const path = location.pathname.endsWith('/')
+            ? location.pathname
+            : location.pathname + '/';
+        const viewsEl = root.querySelector('[data-views]');
+        const likesEl = root.querySelector('[data-likes]');
+        const btn = root.querySelector('[data-like]');
+        const fmt = (n) => new Intl.NumberFormat('id-ID').format(n || 0);
+
+        const apply = (d) => {
+            if (!d || !d.ok) return;
+            if (typeof d.views === 'number' && viewsEl) viewsEl.textContent = fmt(d.views);
+            if (typeof d.likes === 'number' && likesEl) likesEl.textContent = fmt(d.likes);
+            if (btn) {
+                btn.classList.toggle('liked', !!d.liked);
+                btn.setAttribute('aria-pressed', String(!!d.liked));
+            }
+        };
+
+        const load = async () => {
+            try {
+                const r = await fetch('/api/stats?path=' + encodeURIComponent(path));
+                apply(await r.json());
+            } catch {}
+        };
+
+        // Count a view once per tab session per page, then refresh counters.
+        const hitKey = 'ps-hit:' + path;
+        let counted = false;
+        try {
+            counted = !!sessionStorage.getItem(hitKey);
+            if (!counted) sessionStorage.setItem(hitKey, '1');
+        } catch {}
+        if (!counted) {
+            fetch('/api/hit', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({ path, referrer: document.referrer || null }),
+                keepalive: true,
+            })
+                .then(load)
+                .catch(load);
+        } else {
+            load();
+        }
+
+        if (btn) {
+            btn.addEventListener('click', async () => {
+                btn.disabled = true;
+                try {
+                    const r = await fetch('/api/like', {
+                        method: 'POST',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify({ path }),
+                    });
+                    apply(await r.json());
+                } catch {
+                } finally {
+                    btn.disabled = false;
+                }
+            });
+        }
+    }
+</script>

@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layout/Layout.astro';
+import PageStats from '../../components/PageStats.astro';
 import { FiArrowLeft, FiHeart, FiRepeat, FiShare2 } from 'react-icons/fi';
 
 export async function getStaticPaths() {
@@ -75,9 +76,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('id-ID', {
                 )}
 
                 <div class="mt-3 flex items-center gap-7 text-gray-400 border-b border-gray-800 pb-5">
-                    <button class="like-btn hover:text-rose-400 transition-colors cursor-pointer" aria-label="Suka">
-                        <FiHeart className="w-5 h-5" />
-                    </button>
+                    <PageStats />
                     <a href={`https://www.threads.net/intent/post?text=${shareText}%20${shareUrl}`} target="_blank" rel="noopener" class="hover:text-emerald-400 transition-colors" aria-label="Bagikan ke Threads">
                         <FiRepeat className="w-5 h-5" />
                     </a>
@@ -104,9 +103,6 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('id-ID', {
     </div>
 
     <script>
-        document.querySelectorAll('.like-btn').forEach((btn) => {
-            btn.addEventListener('click', () => btn.classList.toggle('text-rose-500'));
-        });
         document.querySelectorAll('.share-btn').forEach((btn) => {
             btn.addEventListener('click', async () => {
                 const url = btn.getAttribute('data-url') || '';
