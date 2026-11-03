@@ -1,5 +1,65 @@
-import React, { useState } from 'react';
-import { FiCommand, FiGithub, FiMenu, FiX } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import { FiCommand, FiGithub, FiGlobe, FiMenu, FiX } from 'react-icons/fi';
+
+// ID/EN language switch. Targets come from /langmap.json (built from the
+// content pairs): when this page has a twin in the other language the
+// switch jumps straight to it, otherwise it falls back to that language's
+// blog index. The ?lang= parameter makes the middleware store the choice
+// in a cookie, so the geo routing respects it afterwards.
+const LangSwitch: React.FC = () => {
+    const [lang, setLang] = useState<'id' | 'en'>('id');
+    const [targets, setTargets] = useState<{ id: string; en: string }>({
+        id: '/blog/?lang=id',
+        en: '/en/blog/?lang=en',
+    });
+
+    useEffect(() => {
+        const raw = window.location.pathname;
+        const path = raw.endsWith('/') ? raw : raw + '/';
+        const cookieLang = /(?:^|; )lang=(id|en)(?:;|$)/.exec(document.cookie)?.[1] as
+            | 'id'
+            | 'en'
+            | undefined;
+        let current: 'id' | 'en' = path.startsWith('/en/') ? 'en' : cookieLang || 'id';
+        fetch('/langmap.json')
+            .then((r) => (r.ok ? r.json() : null))
+            .then((data) => {
+                const entry = data?.pairs?.[path];
+                if (entry) {
+                    if (entry.toLang === 'en') {
+                        current = 'id';
+                        setTargets({ id: `${path}?lang=id`, en: `${entry.to}?lang=en` });
+                    } else {
+                        current = 'en';
+                        setTargets({ id: `${entry.to}?lang=id`, en: `${path}?lang=en` });
+                    }
+                }
+                setLang(current);
+            })
+            .catch(() => setLang(current));
+    }, []);
+
+    const cls = (active: boolean) =>
+        `px-2 py-1 rounded-md transition-colors ${
+            active ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white'
+        }`;
+
+    return (
+        <div
+            className="flex items-center rounded-lg bg-gray-900 border border-gray-800 p-0.5 text-[11px] font-mono"
+            role="group"
+            aria-label="Language / Bahasa"
+        >
+            <FiGlobe className="w-3.5 h-3.5 text-gray-500 ml-1.5 mr-0.5" aria-hidden="true" />
+            <a href={targets.id} className={cls(lang === 'id')} aria-current={lang === 'id'}>
+                ID
+            </a>
+            <a href={targets.en} className={cls(lang === 'en')} aria-current={lang === 'en'}>
+                EN
+            </a>
+        </div>
+    );
+};
 
 const Header: React.FC = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -72,6 +132,7 @@ const Header: React.FC = () => {
 
                 {/* Right Actions */}
                 <div className="hidden md:flex items-center space-x-3">
+                    <LangSwitch />
                     <button
                         onClick={triggerPalette}
                         className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-gray-900 border border-gray-800 text-gray-400 hover:text-gray-200 hover:border-gray-700 text-xs transition-all cursor-pointer"
@@ -97,6 +158,7 @@ const Header: React.FC = () => {
 
                 {/* Mobile Controls */}
                 <div className="flex md:hidden items-center space-x-2">
+                    <LangSwitch />
                     <button
                         onClick={triggerPalette}
                         className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-300"
